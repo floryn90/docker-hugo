@@ -14,7 +14,7 @@ build-debug: src/bin/buildx
 prepare: src/bin/buildx
 	@rm -rf target/bundle
 	@docker run --rm -i -v $$(pwd):/work -u $$(id -u) \
-		floryn90/docker-project-prepare:edge \
+		klakegg/docker-project-prepare:edge \
 		-t target/bundle
 	@mv target/bundle/Makefile target/bundle/Makefile.original
 	@cat target/bundle/Makefile.original | sed "s:DOCKER_CLI_EXPERIMENTAL=enabled docker buildx:buildx:g" > target/bundle/Makefile
