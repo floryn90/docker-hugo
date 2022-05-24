@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout
@@ -26,7 +26,7 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v1
         with:
-          username: klakegg
+          username: floryn90
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Prepare
