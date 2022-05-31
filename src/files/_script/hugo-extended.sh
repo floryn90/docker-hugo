@@ -24,10 +24,10 @@ else
 fi
 
 # Download binaries from release
-#wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-${HUGO_ARCH}.tar.gz
-#wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt
-wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-extended-${HUGO_VERSION}-linux-${HUGOGURU_ARCH}.tar.gz
-wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-${HUGO_VERSION}-checksums-sha256.txt
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-${HUGO_ARCH}.tar.gz
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt
+#wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-extended-${HUGO_VERSION}-linux-${HUGOGURU_ARCH}.tar.gz
+#wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-${HUGO_VERSION}-checksums-sha256.txt
 
 # Verify checksums
 #grep hugo_extended_${HUGO_VERSION}_Linux-${HUGO_ARCH}.tar.gz hugo_${HUGO_VERSION}_checksums.txt | sha256sum -c
