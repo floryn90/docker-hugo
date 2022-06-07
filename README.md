@@ -1,6 +1,6 @@
 # Hugo
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/floryn90/hugo.svg)](https://store.docker.com/community/images/floryn90/hugo)
+[![Docker Pulls](https://img.shields.io/docker/pulls/floryn90/hugo)(https://hub.docker.com/r/floryn90/hugo)
 
 Truly minimal Docker images for [Hugo](http://gohugo.io/) with batteries included.
 These images sets `bind` when started as server, otherwise no magic.
