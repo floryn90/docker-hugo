@@ -43,3 +43,4 @@ Image based upon [Ubuntu](https://hub.docker.com/r/_/ubuntu/):
 * Hugo 0.100.0: `0.100.0-ubuntu`, `0.100.0-ubuntu-ci`, `0.100.0-ubuntu-onbuild`, `0.100.0-ext-ubuntu`, `0.100.0-ext-ubuntu-ci`, `0.100.0-ext-ubuntu-onbuild`
 * Hugo 0.99.1: `0.99.1-ubuntu`, `0.99.1-ubuntu-ci`, `0.99.1-ubuntu-onbuild`, `0.99.1-ext-ubuntu`, `0.99.1-ext-ubuntu-ci`, `0.99.1-ext-ubuntu-onbuild`
 
+*Looking for older tags? Please see the [complete list of tags](https://github.com/floryn90/docker-hugo/blob/master/doc/tags.md).*
