@@ -253,7 +253,7 @@ In docker-compose using `entrypoint`:
 | Go       | 1.18.3  |
 | NodeJS   | 18.x    |
 | Pandoc   | 2.18    |
-| Yarn     | 1.22.10 |
+| Yarn     | 1.22.19 |
 
 
 ## Configuration
