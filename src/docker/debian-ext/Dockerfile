@@ -29,7 +29,7 @@ RUN true \
  && pip install rst2html \
  #
  # Install NodeJS and tooling
- && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+ && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
  && apt install -y nodejs \
  && npm install -g autoprefixer@10.4.7 postcss@8.4.14 postcss-cli@9.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
