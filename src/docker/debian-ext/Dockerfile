@@ -33,6 +33,9 @@ RUN true \
  && apt install -y nodejs \
  && npm install -g autoprefixer@10.2.4 postcss@8.2.6 postcss-cli@8.3.1 yarn@1.22.10 @babel/cli @babel/core \
  #
+ # Install npm packages
+ && npm install -g @fullhuman/postcss-purgecss \
+ #
  # Install Asciidoctor
  && DEBIAN_FRONTEND=noninteractive apt install -y ruby \
  && gem install asciidoctor coderay asciidoctor-rouge --no-document \
