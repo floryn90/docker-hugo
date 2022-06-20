@@ -4,4 +4,4 @@ FROM busybox:1.35 AS busybox
 
 FROM debian:11.3-slim AS debian
 
-FROM ubuntu:22.04 AS ubuntu
+FROM ubuntu:20.04 AS ubuntu
