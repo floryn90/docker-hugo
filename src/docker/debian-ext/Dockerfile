@@ -24,12 +24,12 @@ RUN true \
  && apt update \
  && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg apt-transport-https lsb-release \
  #
- # Install Python 2 and rst2html
+ # Install Python 3 and rst2html
  && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-minimal python3-pip python3-setuptools python3-wheel \
  && pip install rst2html \
  #
  # Install NodeJS and tooling
- && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+ && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
  && apt install -y nodejs \
  && npm install -g autoprefixer@10.4.7 postcss@8.4.14 postcss-cli@9.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
