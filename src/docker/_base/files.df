@@ -2,7 +2,8 @@ FROM base--image--alpine AS fetcher
 
 ADD . /files
 
-RUN chmod a+x /files/**/bin/* /files/**/usr/bin/*
+RUN chmod a+x /files/**/bin/*
+RUN chmod a+x /files/**/usr/bin/*
 
 
 FROM scratch AS scripts
