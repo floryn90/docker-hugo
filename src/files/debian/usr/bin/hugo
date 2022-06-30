@@ -14,8 +14,6 @@ case "$1" in
 
     "__complete")
         exec $cmd "$@"
-<<<<<<< HEAD
-=======
         ;;
 
     "benchmark")
@@ -24,7 +22,6 @@ case "$1" in
 
     "completion")
         exec $cmd "$@"
->>>>>>> 33afe975476629d0de7ec2b638fd97e77bfd5604
         ;;
 
     "benchmark")
