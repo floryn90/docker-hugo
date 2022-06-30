@@ -31,6 +31,4 @@ tar -zxvf pandoc.tar.gz
 mkdir -p /files/usr/bin
 mv /pandoc-${PANDOC_VERSION}/bin/pandoc /files/usr/bin/pandoc-default
 
-export PATH="/files/usr/bin:/files/bin:${PATH}"
-
 /files/usr/bin/pandoc-default -v 
