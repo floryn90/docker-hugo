@@ -14,6 +14,17 @@ case "$1" in
 
     "__complete")
         exec $cmd "$@"
+<<<<<<< HEAD
+=======
+        ;;
+
+    "benchmark")
+        exec $cmd "$@"
+        ;;
+
+    "completion")
+        exec $cmd "$@"
+>>>>>>> 33afe975476629d0de7ec2b638fd97e77bfd5604
         ;;
 
     "benchmark")
@@ -101,7 +112,7 @@ case "$1" in
         test "$(id -u)" = "0" || opts="$opts --noTimes"
 
         shift
-        exec $cmd "$@"
+        exec $cmd "$@" $opts
         ;;
 
     # Default build command
@@ -114,7 +125,7 @@ case "$1" in
         # https://github.com/gohugoio/hugo/issues/7302
         test "$(id -u)" = "0" || opts="$opts --noTimes"
 
-        exec $cmd "$@"
+        exec $cmd "$@" $opts
         ;;
 
 esac
