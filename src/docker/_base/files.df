@@ -3,6 +3,7 @@ FROM base--image--alpine AS fetcher
 ADD . /files
 
 RUN chmod a+x /files/**/bin/* /files/**/usr/bin/*
+RUN chmod a+x /files/pandoc/usr/bin/pandoc
 
 FROM scratch AS scripts
 
