@@ -24,6 +24,9 @@ test: test-docsy test-docuapi
 test-docsy:
 	@rm -rf target/test/docsy
 	@git clone --recurse-submodules --depth 1 https://github.com/google/docsy.git target/test/docsy
+	@cd $$(pwd)/target/test/docsy 
+	@npm install
+	@cd $$(pwd)/../../../
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
 test-docuapi:
