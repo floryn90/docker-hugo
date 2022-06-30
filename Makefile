@@ -24,14 +24,13 @@ test: test-docsy test-docuapi
 test-docsy:
 	@rm -rf target/test/docsy
 	@git clone --recurse-submodules --depth 1 https://github.com/google/docsy.git target/test/docsy
-	@cd $$(pwd)/target/test/docsy 
-	@npm install
-	@cd $$(pwd)/../../../
+	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine npm install
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
 test-docuapi:
 	@rm -rf target/test/docuapi
 	@git clone --depth 1 https://github.com/bep/docuapi.git target/test/docuapi
+	@docker run --rm -i -v $$(pwd)/target/test/docuapi:/src -u $$(id -u) floryn90/hugo:ext-alpine npm install
 	@docker run --rm -i -v $$(pwd)/target/test/docuapi:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
 push-edge:
