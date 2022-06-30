@@ -22,6 +22,14 @@ case "$1" in
 
     "completion")
         exec $cmd "$@"
+        ;;
+
+    "benchmark")
+        exec $cmd "$@"
+        ;;
+
+    "completion")
+        exec $cmd "$@"
         ;;        
 
     "config")
