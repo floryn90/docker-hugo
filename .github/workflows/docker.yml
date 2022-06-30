@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - '0.**'
   release:
     types:
       - released
