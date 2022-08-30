@@ -1,4 +1,4 @@
-name: Docker build
+name: Bump version and docs
 
 on:
   push:
