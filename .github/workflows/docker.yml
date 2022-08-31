@@ -51,7 +51,3 @@ jobs:
       - name: Push egde images
         if: "!startsWith(github.ref, 'refs/tags/')"
         run: make push-edge
-
-      - name: Push images
-        if: "startsWith(github.ref, 'refs/tags/')"
-        run: make push-release
