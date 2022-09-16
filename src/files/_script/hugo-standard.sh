@@ -27,7 +27,7 @@ wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${
 wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt
 
 # Verify checksums
-grep hugo_${HUGO_VERSION}_Linux-${HUGO_ARCH}.tar.gz hugo_${HUGO_VERSION}_checksums.txt | sha256sum -c
+grep -i hugo_${HUGO_VERSION}_Linux-${HUGO_ARCH}.tar.gz hugo_${HUGO_VERSION}_checksums.txt | sha256sum -c
 
 # Prepare folders
 mkdir -p /files/usr/lib/hugo
