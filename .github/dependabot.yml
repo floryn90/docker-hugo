@@ -13,6 +13,8 @@ registries:
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/src/docker/" # Location of package manifests
+    registries:
+      - dockerhub
     schedule:
       interval: "weekly"
 
