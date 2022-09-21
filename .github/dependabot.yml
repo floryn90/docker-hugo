@@ -4,14 +4,15 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-updates:
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/src/docker/" # Location of package manifests
-    schedule:
-      interval: "weekly"
 registries:
   dockerhub:
     type: docker-registry
     url: https://registry.hub.docker.com
     username: floryn90
     password:  ${{ secrets.DOCKER_TOKEN }}
+updates:
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/src/docker/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
