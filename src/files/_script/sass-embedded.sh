@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-SASS_EMBEDDED_VERSION="1.52.3"
+SASS_EMBEDDED_VERSION="1.55.0"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
