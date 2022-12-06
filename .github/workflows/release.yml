@@ -51,9 +51,8 @@ jobs:
         run: make push-release
       
       - name: Sync Readme
-        uses: ms-jpq/sync-dockerhub-readme@v1
+        uses: meeDamian/sync-readme@v1.0.6
         with:
-          username: floryn90
-          password: ${{ secrets.DOCKER_TOKEN }}
-          repository: hugo
-          readme: "./README.md"
+          user: floryn90
+          pass: ${{ secrets.DOCKER_TOKEN }}
+          slug: floryn90/hugo
