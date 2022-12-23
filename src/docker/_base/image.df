@@ -1,7 +1,7 @@
-FROM alpine:3.16 AS alpine
+FROM alpine:3.17 AS alpine
 
 FROM busybox:1.35 AS busybox
 
-FROM debian:11.5-slim AS debian
+FROM debian:11.6-slim AS debian
 
-FROM ubuntu:22.10 AS ubuntu
+FROM ubuntu:23.04 AS ubuntu
