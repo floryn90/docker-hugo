@@ -28,7 +28,7 @@ RUN apk add --no-cache libc6-compat libstdc++ busybox-suid bash bash-completion 
 
 COPY --from=image / /
 
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+RUN ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
 RUN true \
  #
