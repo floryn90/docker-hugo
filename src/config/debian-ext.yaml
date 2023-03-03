@@ -62,7 +62,7 @@ tests:
   pandoc:
     entrypoint: pandoc
     command: --version
-    expected: Compiled with pandoc
+    expected: pandoc-default
 
   golang:
     entrypoint: go
