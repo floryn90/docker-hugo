@@ -255,10 +255,10 @@ In docker-compose using `entrypoint`:
 
 | Software | Version |
 | -------- | ------- |
-| Go       | 1.16.2  |
-| NodeJS   | 18.x    |
-| Pandoc   | 2.12    |
-| Yarn     | 1.22.10 |
+| Go       | 1.20.1  |
+| NodeJS   | 19.x    |
+| Pandoc   | 3.1     |
+| Yarn     | 1.58.3  |
 
 
 ## Configuration
