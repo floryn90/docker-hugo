@@ -17,7 +17,6 @@ Default minimal image based upon [Busybox](https://hub.docker.com/r/_/busybox/):
 * Hugo 0.110.0: `0.110.0-busybox`, `0.110.0`, `0.110.0-busybox-ci`, `0.110.0-ci`, `0.110.0-busybox-onbuild`, `0.110.0-onbuild`
 * Hugo 0.109.0: `0.109.0-busybox`, `0.109.0`, `0.109.0-busybox-ci`, `0.109.0-ci`, `0.109.0-busybox-onbuild`, `0.109.0-onbuild`
 * Hugo 0.108.0: `0.108.0-busybox`, `0.108.0`, `0.108.0-busybox-ci`, `0.108.0-ci`, `0.108.0-busybox-onbuild`, `0.108.0-onbuild`
-* Hugo 0.107.0: `0.107.0-busybox`, `0.107.0`, `0.107.0-busybox-ci`, `0.107.0-ci`, `0.107.0-busybox-onbuild`, `0.107.0-onbuild`
 
 
 
@@ -29,7 +28,6 @@ Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/):
 * Hugo 0.110.0: `0.110.0-alpine`, `0.110.0-alpine-ci`, `0.110.0-alpine-onbuild`, `0.110.0-ext-alpine`, `0.110.0-ext-alpine-ci`, `0.110.0-ext-alpine-onbuild`
 * Hugo 0.109.0: `0.109.0-alpine`, `0.109.0-alpine-ci`, `0.109.0-alpine-onbuild`, `0.109.0-ext-alpine`, `0.109.0-ext-alpine-ci`, `0.109.0-ext-alpine-onbuild`
 * Hugo 0.108.0: `0.108.0-alpine`, `0.108.0-alpine-ci`, `0.108.0-alpine-onbuild`, `0.108.0-ext-alpine`, `0.108.0-ext-alpine-ci`, `0.108.0-ext-alpine-onbuild`
-* Hugo 0.107.0: `0.107.0-alpine`, `0.107.0-alpine-ci`, `0.107.0-alpine-onbuild`, `0.107.0-ext-alpine`, `0.107.0-ext-alpine-ci`, `0.107.0-ext-alpine-onbuild`
 
 
 Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/) with [Asciidoctor](http://asciidoctor.org/) installed:
@@ -40,7 +38,6 @@ Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/) with [Asci
 * Hugo 0.110.0: `0.110.0-asciidoctor`, `0.110.0-asciidoctor-onbuild`, `0.110.0-asciidoctor-ci`, `0.110.0-ext-asciidoctor`, `0.110.0-ext-asciidoctor-ci`, `0.110.0-ext-asciidoctor-onbuild`
 * Hugo 0.109.0: `0.109.0-asciidoctor`, `0.109.0-asciidoctor-onbuild`, `0.109.0-asciidoctor-ci`, `0.109.0-ext-asciidoctor`, `0.109.0-ext-asciidoctor-ci`, `0.109.0-ext-asciidoctor-onbuild`
 * Hugo 0.108.0: `0.108.0-asciidoctor`, `0.108.0-asciidoctor-onbuild`, `0.108.0-asciidoctor-ci`, `0.108.0-ext-asciidoctor`, `0.108.0-ext-asciidoctor-ci`, `0.108.0-ext-asciidoctor-onbuild`
-* Hugo 0.107.0: `0.107.0-asciidoctor`, `0.107.0-asciidoctor-onbuild`, `0.107.0-asciidoctor-ci`, `0.107.0-ext-asciidoctor`, `0.107.0-ext-asciidoctor-ci`, `0.107.0-ext-asciidoctor-onbuild`
 
 
 Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/) with [Pandoc](https://pandoc.org/) installed:
@@ -51,7 +48,6 @@ Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/) with [Pand
 * Hugo 0.110.0: `0.110.0-pandoc`, `0.110.0-pandoc-ci`, `0.110.0-pandoc-onbuild`, `0.110.0-ext-pandoc`, `0.110.0-ext-pandoc-ci`, `0.110.0-ext-pandoc-onbuild`
 * Hugo 0.109.0: `0.109.0-pandoc`, `0.109.0-pandoc-ci`, `0.109.0-pandoc-onbuild`, `0.109.0-ext-pandoc`, `0.109.0-ext-pandoc-ci`, `0.109.0-ext-pandoc-onbuild`
 * Hugo 0.108.0: `0.108.0-pandoc`, `0.108.0-pandoc-ci`, `0.108.0-pandoc-onbuild`, `0.108.0-ext-pandoc`, `0.108.0-ext-pandoc-ci`, `0.108.0-ext-pandoc-onbuild`
-* Hugo 0.107.0: `0.107.0-pandoc`, `0.107.0-pandoc-ci`, `0.107.0-pandoc-onbuild`, `0.107.0-ext-pandoc`, `0.107.0-ext-pandoc-ci`, `0.107.0-ext-pandoc-onbuild`
 
 
 Image based upon [Debian](https://hub.docker.com/r/_/debian/):
@@ -62,7 +58,6 @@ Image based upon [Debian](https://hub.docker.com/r/_/debian/):
 * Hugo 0.110.0: `0.110.0-debian`, `0.110.0-debian-ci`, `0.110.0-debian-onbuild`, `0.110.0-ext`, `0.110.0-ext-debian`, `0.110.0-ext-debian-ci`, `0.110.0-ext-ci`, `0.110.0-ext-debian-onbuild`, `0.110.0-ext-onbuild`
 * Hugo 0.109.0: `0.109.0-debian`, `0.109.0-debian-ci`, `0.109.0-debian-onbuild`, `0.109.0-ext`, `0.109.0-ext-debian`, `0.109.0-ext-debian-ci`, `0.109.0-ext-ci`, `0.109.0-ext-debian-onbuild`, `0.109.0-ext-onbuild`
 * Hugo 0.108.0: `0.108.0-debian`, `0.108.0-debian-ci`, `0.108.0-debian-onbuild`, `0.108.0-ext`, `0.108.0-ext-debian`, `0.108.0-ext-debian-ci`, `0.108.0-ext-ci`, `0.108.0-ext-debian-onbuild`, `0.108.0-ext-onbuild`
-* Hugo 0.107.0: `0.107.0-debian`, `0.107.0-debian-ci`, `0.107.0-debian-onbuild`, `0.107.0-ext`, `0.107.0-ext-debian`, `0.107.0-ext-debian-ci`, `0.107.0-ext-ci`, `0.107.0-ext-debian-onbuild`, `0.107.0-ext-onbuild`
 
 
 Image based upon [Ubuntu](https://hub.docker.com/r/_/ubuntu/):
@@ -73,8 +68,6 @@ Image based upon [Ubuntu](https://hub.docker.com/r/_/ubuntu/):
 * Hugo 0.110.0: `0.110.0-ubuntu`, `0.110.0-ubuntu-ci`, `0.110.0-ubuntu-onbuild`, `0.110.0-ext-ubuntu`, `0.110.0-ext-ubuntu-ci`, `0.110.0-ext-ubuntu-onbuild`
 * Hugo 0.109.0: `0.109.0-ubuntu`, `0.109.0-ubuntu-ci`, `0.109.0-ubuntu-onbuild`, `0.109.0-ext-ubuntu`, `0.109.0-ext-ubuntu-ci`, `0.109.0-ext-ubuntu-onbuild`
 * Hugo 0.108.0: `0.108.0-ubuntu`, `0.108.0-ubuntu-ci`, `0.108.0-ubuntu-onbuild`, `0.108.0-ext-ubuntu`, `0.108.0-ext-ubuntu-ci`, `0.108.0-ext-ubuntu-onbuild`
-* Hugo 0.107.0: `0.107.0-ubuntu`, `0.107.0-ubuntu-ci`, `0.107.0-ubuntu-onbuild`, `0.107.0-ext-ubuntu`, `0.107.0-ext-ubuntu-ci`, `0.107.0-ext-ubuntu-onbuild`
-
 
 *Looking for older tags? Please see the [complete list of tags](https://github.com/floryn90/docker-hugo/blob/master/doc/tags.md).*
 
