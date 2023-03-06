@@ -67,7 +67,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 RUN true \
  #
  # Install npm packages
- && npm install -g autoprefixer@10.4.13 postcss@8.4.20 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
+ && npm install -g autoprefixer@10.4.13 postcss@8.4.21 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install rst2html
  && pip install rst2html \
