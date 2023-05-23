@@ -30,8 +30,8 @@ RUN apk add --no-cache libc6-compat busybox-suid bash bash-completion git tzdata
 COPY --from=image / /
 
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r0/glibc-2.35-r0.apk && \
-  apk update && apk add --force-overwrite gzip glibc-2.35-r0.apk && \
+  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk && \
+  apk update && apk add --force-overwrite gzip glibc-2.35-r1.apk && \
   ln -sf /usr/glibc-compat/lib/ld-linux-x86-64.so.2 /usr/glibc-compat/lib/ld-linux-x86-64.so && \
   ln -sf /usr/glibc-compat/lib/libBrokenLocale.so.1 /usr/glibc-compat/lib/libBrokenLocale.so && \
   ln -sf /usr/glibc-compat/lib/libanl.so.1 /usr/glibc-compat/lib/libanl.so && \
@@ -50,13 +50,13 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
   ln -sf /usr/glibc-compat/lib/librt.so.1 /usr/glibc-compat/lib/librt.so && \
   ln -sf /usr/glibc-compat/lib/libthread_db.so.1 /usr/glibc-compat/lib/libthread_db.so && \
   ln -sf /usr/glibc-compat/lib/libutil.so.1 /usr/glibc-compat/lib/libutil.so && \
-  rm glibc-2.35-r0.apk && \
-  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r0/glibc-bin-2.35-r0.apk && \
-  apk add --force-overwrite glibc-bin-2.35-r0.apk && \
-  rm glibc-bin-2.35-r0.apk && \
-  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r0/glibc-i18n-2.35-r0.apk && \
-  apk add --force-overwrite glibc-i18n-2.35-r0.apk && \
-  rm glibc-i18n-2.35-r0.apk /etc/apk/keys/sgerrand.rsa.pub && \
+  rm glibc-2.35-r1.apk && \
+  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-bin-2.35-r1.apk && \
+  apk add --force-overwrite glibc-bin-2.35-r1.apk && \
+  rm glibc-bin-2.35-r1.apk && \
+  wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-i18n-2.35-r1.apk && \
+  apk add --force-overwrite glibc-i18n-2.35-r1.apk && \
+  rm glibc-i18n-2.35-r1.apk /etc/apk/keys/sgerrand.rsa.pub && \
   gunzip --keep /usr/glibc-compat/share/i18n/charmaps/UTF-8.gz && \
   /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 && \
   apk del glibc-bin glibc-i18n gzip && \
@@ -67,7 +67,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 RUN true \
  #
  # Install npm packages
- && npm install -g autoprefixer@10.4.13 postcss@8.4.21 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
+ && npm install -g autoprefixer@10.4.14 postcss@8.4.23 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install rst2html
  && pip install rst2html \
