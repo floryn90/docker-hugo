@@ -26,10 +26,10 @@ RUN true \
  #
  # Install Python 3 and rst2html
  && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-minimal python3-pip python3-setuptools python3-wheel \
- && pip install rst2html \
+ && pip install --break-system-packages rst2html \
  #
  # Install NodeJS and tooling
- && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+ && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
  && apt install -y nodejs \
  && npm install -g autoprefixer@10.4.13 postcss@8.4.21 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
