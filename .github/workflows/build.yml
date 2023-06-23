@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ "master" ]
   push:
-    branches: [ "master" ]
+    branches: [ "release/*" ]
 
   workflow_dispatch:
 
@@ -50,5 +50,5 @@ jobs:
         run: make test-docuapi
 
       - name: Push egde images
-        if: "!startsWith(github.ref, 'refs/tags/')"
+        if: ! startsWith(github.ref, 'refs/tags/')
         run: make push-edge
