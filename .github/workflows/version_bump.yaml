@@ -17,7 +17,7 @@ jobs:
           ref: master
 
       - name: Login to GitHub API
-        run: gh auth login --with-token ${{ secrets.TOKEN_GITHUB }}
+        run: gh auth login --with-token < ${{ secrets.TOKEN_GITHUB }}
   
       - name: Check latest release tag
         id: hugo_tag
