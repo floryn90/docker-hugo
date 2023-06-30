@@ -43,9 +43,9 @@ jobs:
 
       - name: Create new PR with latest release branch
         run: |
-        gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/floryn90/docker-hugo/pulls -f title="Hugo version bump to ${{env.hugo_latest_release_tag}}" -f body='Hugo version bump to ${{env.hugo_latest_release_tag}}' -f head="octocat:release/${{env.hugo_latest_release_tag}}" -f base='master' 
+        gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/floryn90/docker-hugo/pulls -f title="Hugo version bump to ${{env.hugo_latest_release_tag}}" -f body="Hugo version bump to ${{env.hugo_latest_release_tag}}" -f head="octocat:release/${{env.hugo_latest_release_tag}}" -f base='master' 
       
       - name: Create new release tag
         run: |
-        gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/floryn90/docker-hugo/releases -f tag_name='v${{env.hugo_latest_release_tag}}' -f target_commitish='master' -f name="Hugo version v${{env.hugo_latest_release_tag}}"" -f body="Hugo release version bump to ${{env.hugo_latest_release_tag}}" -F draft=false -F prerelease=false -F generate_release_notes=false 
+        gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/floryn90/docker-hugo/releases -f tag_name="v${{env.hugo_latest_release_tag}}" -f target_commitish='master' -f name="Hugo version v${{env.hugo_latest_release_tag}}" -f body="Hugo release version bump to ${{env.hugo_latest_release_tag}}" -F draft=false -F prerelease=false -F generate_release_notes=false 
           
