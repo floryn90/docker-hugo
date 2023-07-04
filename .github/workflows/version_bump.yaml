@@ -38,8 +38,8 @@ jobs:
 
       - name: Configure Git User's information
         run: |
-          git config -g user.email 'info@lunguflorin.ro'
-          git config -g user.name 'Florin Lungu'
+          git config --global user.email 'info@lunguflorin.ro'
+          git config --global user.name 'Florin Lungu'
 
       - name: Create new release branch and run version bump
         if: env.latest_branch != env.hugo_latest_release_tag 
