@@ -39,7 +39,7 @@ jobs:
       - name: Create new release branch and run version bump
         if: env.latest_branch != env.hugo_latest_release_tag 
         run: |
-          git checkout release/${{ env.hugo_latest_release_tag }}
+          git checkout -b release/${{ env.hugo_latest_release_tag }}
           version=${{env.hugo_latest_release_tag}} make bump
           git add -A
           git commit -m "hugo version bump to ${{env.hugo_latest_release_tag}}"
