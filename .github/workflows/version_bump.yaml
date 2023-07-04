@@ -36,6 +36,11 @@ jobs:
           echo "My latest release branch is ${latest_branch}"
           echo "latest_branch=${latest_branch}" >> $GITHUB_ENV
 
+      - name: Configure Git User's information
+        run: |
+          git config -g user.email 'info@lunguflorin.ro'
+          git config -g user.name 'Florin Lungu'
+
       - name: Create new release branch and run version bump
         if: env.latest_branch != env.hugo_latest_release_tag 
         run: |
