@@ -47,7 +47,7 @@ jobs:
           git checkout -b release/${{ env.hugo_latest_release_tag }}
           version=${{env.hugo_latest_release_tag}} make bump
           git add -A 
-          git add -- github_token.txt
+          git reset -- github_token.txt
           git commit -m "hugo version bump to ${{env.hugo_latest_release_tag}}"
           git push origin release/${{env.hugo_latest_release_tag}}:release/${{env.hugo_latest_release_tag}}
 
