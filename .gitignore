@@ -3,3 +3,4 @@
 target
 .vscode/*.log
 src/bin/buildx
+github_token.txt
