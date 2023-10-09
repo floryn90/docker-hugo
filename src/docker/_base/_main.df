@@ -16,7 +16,7 @@ IMPORT files AS files
 
 
 
-FROM alpine:3.17 AS combine
+FROM alpine:3.18 AS combine
 
 # Copy content of files folder to populate base image
 COPY --from=base--files--alpine / /files/alpine
