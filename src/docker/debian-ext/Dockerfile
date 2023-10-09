@@ -29,9 +29,16 @@ RUN true \
  && pip install rst2html \
  #
  # Install NodeJS and tooling
- && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
- && apt install -y nodejs \
- && npm install -g autoprefixer@10.4.13 postcss@8.4.21 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
+ && apt install -y ca-certificates curl gnupg \
+ && mkdir -p /etc/apt/keyrings \
+ && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+ && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
+ && apt update \
+ && install nodejs -y \
+
+# && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+# && apt install -y nodejs \
+ && npm install -g autoprefixer@10.4.16 postcss@8.4.31 postcss-cli@10.1.0 yarn@1.22.19 @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install Asciidoctor
  && DEBIAN_FRONTEND=noninteractive apt install -y ruby \
