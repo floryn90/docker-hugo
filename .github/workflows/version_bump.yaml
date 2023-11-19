@@ -1,4 +1,4 @@
-name: Hugo realease version bump
+name: Hugo release version bump
 
 on:
   schedule:
