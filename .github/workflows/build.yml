@@ -46,11 +46,11 @@ jobs:
           path: target
 
       - name: Test Docsy
-        run: make test-docsy
+        run: sudo make test-docsy
 
       - name: Test DocuAPI
-        run: make test-docuapi
+        run: sudo make test-docuapi
 
-      - name: Push egde images
+      - name: Push edge images
         if: "!startsWith(github.ref, 'refs/tags/')"
         run: make push-edge
