@@ -104,13 +104,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
 
     - name: hugo
-      uses: floryn90/actions-hugo@1.0.0
+      uses: klakegg/actions-hugo@1.0.0
 ```
 
-Find out more in [floryn90/actions-hugo](https://github.com/floryn90/actions-hugo).
+Find out more in [klakegg/actions-hugo](https://github.com/klakegg/actions-hugo).
 
 
 ### Travis CI
@@ -151,7 +151,7 @@ docker run --rm -it \
 
 The extended edition is used in those images containing `ext` in the name. Except use of extended edition and additional tools are those images exactly the same as those using the normal edition.
 
-Table of Hugo extention features and the version when images first support the feature:
+Table of Hugo extension features and the version when images first support the feature:
 
 | Feature       | Alpine | Debian | Ubuntu |
 | ------------- | ------ | ------ | ------ |
@@ -204,7 +204,7 @@ Hugo images with Pandoc support are made available for users wanting to use Pand
 
 [Hugo triggers Pandoc](https://gohugo.io/content-management/formats/#additional-formats-through-external-helpers) with `pandoc --mathjax`.
 Some users may want to use other arguments, so to accommodate such a need is an alias `pandoc` created with the content of `HUGO_PANDOC` (default: `pandoc-default`) upon initiation.
-The `pandoc` executable is renamed to `pandoc-default` as a new `pandoc` script is provided to hanle the `HUGO_PANDOC` evironment variable.
+The `pandoc` executable is renamed to `pandoc-default` as a new `pandoc` script is provided to handle the `HUGO_PANDOC` environment variable.
 
 Example of explicit setting `pandoc` alias:
 
