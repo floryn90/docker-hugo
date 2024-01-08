@@ -107,10 +107,10 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: hugo
-      uses: klakegg/actions-hugo@1.0.0
+      uses: floryn90/actions-hugo@1.0.0
 ```
 
-Find out more in [klakegg/actions-hugo](https://github.com/klakegg/actions-hugo).
+Find out more in [floryn90/actions-hugo](https://github.com/floryn90/actions-hugo).
 
 
 ### Travis CI
