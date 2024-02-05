@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-NODE_VERSION="21.4.0"
+NODE_VERSION="21.6.1"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
