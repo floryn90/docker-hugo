@@ -8,7 +8,8 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: arc-runner-set
 
     steps:
       - name: Checkout
