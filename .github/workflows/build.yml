@@ -33,6 +33,12 @@ jobs:
           username: floryn90
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: floryn90/hugo
+
       - name: Prepare
         run: make prepare
 

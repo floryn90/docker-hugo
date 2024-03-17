@@ -18,6 +18,9 @@ prepare: src/bin/buildx
 		-t target/bundle
 	@mv target/bundle/Makefile target/bundle/Makefile.original
 	@cat target/bundle/Makefile.original | sed "s:DOCKER_CLI_EXPERIMENTAL=enabled docker buildx:buildx:g" > target/bundle/Makefile
+	@rm target/bundle/Makefile.original
+	@mv target/bundle/Makefile target/bundle/Makefile.original
+	@cat target/bundle/Makefile.original | sed "s:--push:--provenance=true --sbom=true --push:g" > target/bundle/Makefile
 
 test: test-docsy test-docuapi
 
