@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Clean Workspace
-        uses: AutoModality/action-clean@v1
+        uses: AutoModality/action-clean@v1.1.1
         
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
         run: make build
 
       - name: Upload target content
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: target
           path: target
@@ -51,7 +51,7 @@ jobs:
         run: make push-release
       
       - name: Docker Hub Description
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: floryn90
           password: ${{ secrets.DOCKER_TOKEN }}

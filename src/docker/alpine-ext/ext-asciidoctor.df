@@ -1,6 +1,6 @@
 FROM ext-alpine AS main
 
-RUN apk --no-cache add asciidoctor \
+RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && gem install coderay --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 

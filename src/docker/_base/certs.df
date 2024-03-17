@@ -1,6 +1,6 @@
 FROM base--image--alpine AS source
 
-RUN apk --no-cache add ca-certificates \
+RUN apk -U upgrade && apk --no-cache add ca-certificates \
  && cp -r -L /etc/ssl/certs /certs
 
 
