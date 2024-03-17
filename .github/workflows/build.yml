@@ -40,7 +40,7 @@ jobs:
         run: make build
 
       - name: Upload target content
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: target
           path: target
