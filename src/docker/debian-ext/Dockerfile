@@ -22,6 +22,7 @@ RUN true \
  #
  # Install software
  && apt update \
+ && apt -y full-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg apt-transport-https lsb-release \
  #
  # Install Python 3 and rst2html
