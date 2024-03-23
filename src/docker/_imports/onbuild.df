@@ -12,4 +12,4 @@ ONBUILD ENV HUGO_DESTINATION="${HUGO_DESTINATION_ARG:-/target}" \
 
 ONBUILD COPY . /src
 ONBUILD WORKDIR ${HUGO_DIR:-/src}
-ONBUILD RUN if [ -e "$ONBUILD_SCRIPT_VALUE" ]; then exec sh $ONBUILD_SCRIPT_VALUE; else exec hugo $HUGO_CMD; fi
+ONBUILD RUN if [ -e "$ONBUILD_SCRIPT_VALUE" ]; then exec sh $ONBUILD_SCRIPT_VALUE; else exec hugo build $HUGO_CMD; fi
