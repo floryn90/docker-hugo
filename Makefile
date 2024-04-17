@@ -26,17 +26,13 @@ test: test-docsy test-docuapi
 
 test-docsy:
 	@rm -rf target/test/docsy
-	@git clone --recurse-submodules --depth 1 https://github.com/google/docsy.git target/test/docsy
-	@$$(cd target/test/docsy && git fetch origin --tags)
-	@$$(cd target/test/docsy && git switch -c $$(git tag -l --sort=committerdate | tail -1))
+	@git clone -b v0.9.0 https://github.com/google/docsy.git target/test/docsy
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) --entrypoint npm floryn90/hugo:ext-alpine install
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
 test-docuapi:
 	@rm -rf target/test/docuapi
-	@git clone --depth 1 https://github.com/bep/docuapi.git target/test/docuapi
-	@$$(cd target/test/docuapi && git fetch origin --tags)
-	@$$(cd target/test/docuapi && git switch -c $$(git tag -l --sort=committerdate | tail -1))
+	@git clone -b v2.4.0 https://github.com/bep/docuapi.git target/test/docuapi
 	@docker run --rm -i -v $$(pwd)/target/test/docuapi:/src -u $$(id -u) --entrypoint npm floryn90/hugo:ext-alpine install
 	@docker run --rm -i -v $$(pwd)/target/test/docuapi:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
