@@ -26,7 +26,7 @@ test: test-docsy test-docuapi
 
 test-docsy:
 	@rm -rf target/test/docsy
-	@git clone -b v0.9.0 https://github.com/google/docsy.git target/test/docsy
+	@git clone -b v0.8.0 https://github.com/google/docsy.git target/test/docsy
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) --entrypoint npm floryn90/hugo:ext-alpine install
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
