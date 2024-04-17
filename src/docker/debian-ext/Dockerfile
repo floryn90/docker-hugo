@@ -36,7 +36,7 @@ RUN true \
  && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_21.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
  && apt update \
  && apt install nodejs -y \
-
+#
 # && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
 # && apt install -y nodejs \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
