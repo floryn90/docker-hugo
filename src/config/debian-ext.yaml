@@ -78,5 +78,5 @@ tests:
     command: --version
 
   rst2html:
-    entrypoint: rst2html.py
+    entrypoint: rst2html
     command: --version
