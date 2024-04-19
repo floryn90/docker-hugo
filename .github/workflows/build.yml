@@ -13,13 +13,18 @@ on:
 jobs:
   build:
     runs-on: floryn90-runners
-    
+
     steps:
       - name: Clean Workspace
         uses: AutoModality/action-clean@v1
         
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install build essential
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install build-essential
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
