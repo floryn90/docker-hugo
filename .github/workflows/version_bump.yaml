@@ -8,9 +8,7 @@ on:
 
 jobs:
   update:
-    runs-on: 
-      - floryn90-runners
-      - ubuntu-latest
+    runs-on: [self-hosted,floryn90-runners,ubuntu-latest]
 
     steps:
       - name: Checkout

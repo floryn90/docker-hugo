@@ -14,9 +14,7 @@ permissions:
 
 jobs:
   Analysis:
-    runs-on: 
-      - floryn90-runners
-      - ubuntu-latest
+    runs-on: [self-hosted,floryn90-runners,ubuntu-latest]
     
     steps:
       - name: Analyze with SonarCloud         
