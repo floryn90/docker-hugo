@@ -12,8 +12,8 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted,floryn90-runners,ubuntu-latest]
-
+    runs-on: floryn90-runners
+    
     steps:
       - name: Clean Workspace
         uses: AutoModality/action-clean@v1
