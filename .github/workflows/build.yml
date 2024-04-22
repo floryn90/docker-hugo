@@ -32,6 +32,12 @@ jobs:
           if [[ -f /runner/.path ]]; then
             source /runner/.path
           fi
+          
+      - name: Load System Env
+        run: |
+          if [[ -f /etc/environment ]]; then
+            source /etc/environment
+          fi          
 
       - name: Install build essential
         run: |
@@ -61,7 +67,7 @@ jobs:
         run: make prepare
 
       - name: Build
-        run: make build
+        run: make build-debug
 
       - name: Upload target content
         uses: actions/upload-artifact@v4
