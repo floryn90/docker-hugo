@@ -3,7 +3,7 @@ FROM base--image--alpine AS fetcher
 ARG TARGETPLATFORM
 
 ADD _script/sass-embedded.sh sass-embedded.sh
-RUN sass-embedded.sh
+RUN sh sass-embedded.sh
 
 
 
