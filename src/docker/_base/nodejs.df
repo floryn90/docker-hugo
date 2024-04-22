@@ -3,7 +3,7 @@ FROM base--image--alpine AS fetcher-glibc
 ARG TARGETPLATFORM
 
 ADD _script/nodejs-glibc.sh nodejs.sh
-RUN /bin/sh nodejs.sh
+RUN nodejs.sh
 
 
 
@@ -20,7 +20,7 @@ FROM base--image--alpine AS fetcher-musl
 ARG TARGETPLATFORM
 
 ADD _script/nodejs-musl.sh nodejs.sh
-RUN /bin/sh nodejs.sh
+RUN nodejs.sh
 
 
 
