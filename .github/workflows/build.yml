@@ -21,6 +21,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Load assetpath
+        run: |
+          if [[ -f /runnertmp/.path ]]; then
+            source /runnertmp/.path
+          fi
+
+      - name: Load servicepath
+        run: |
+          if [[ -f /runner/.path ]]; then
+            source /runner/.path
+          fi
+
       - name: Install build essential
         run: |
           sudo apt-get update
