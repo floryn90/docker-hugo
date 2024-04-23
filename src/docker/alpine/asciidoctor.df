@@ -1,6 +1,6 @@
 FROM alpine AS main
 
-RUN apk -U upgrade && apk --no-cache add asciidoctor \
+RUN apk -U upgrade && apk --no-cache add asciidoctor busybox-binsh \
  && gem install coderay asciidoctor-rouge --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 
