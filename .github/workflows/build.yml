@@ -42,7 +42,7 @@ jobs:
       - name: Install build essential
         run: |
           sudo apt-get update
-          sudo apt-get dist-upgrade -y
+          sudo apt-get full-upgrade -y
           sudo apt-get -y install build-essential curl apt-utils wget unzip
 
       - name: Set up QEMU
@@ -67,7 +67,7 @@ jobs:
         run: make prepare
 
       - name: Build
-        run: make build-debug
+        run: make build
 
       - name: Upload target content
         uses: actions/upload-artifact@v4
