@@ -27,7 +27,7 @@ IMPORT ../_imports/version_arg.df
 
 ARG TARGETPLATFORM
 
-RUN apt update && apt full-upgrade -y && apt install -y wget curl
+RUN apk -U upgrade && apk --no-cache add wget curl
 
 # RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 

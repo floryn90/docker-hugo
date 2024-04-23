@@ -2,7 +2,7 @@ FROM base--image--alpine AS fetcher
 
 ARG TARGETPLATFORM
 
-RUN apt update && apt full-upgrade -y && apt install -y wget curl
+RUN apk -U upgrade && apk --no-cache add wget curl
 
 ADD _script/sass-embedded.sh sass-embedded.sh
 RUN sh sass-embedded.sh

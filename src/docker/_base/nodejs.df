@@ -2,7 +2,7 @@ FROM base--image--alpine AS fetcher-glibc
 
 ARG TARGETPLATFORM
 
-RUN apt update && apt full-upgrade -y && apt install -y wget curl
+RUN apk -U upgrade && apk --no-cache add wget curl
 
 ADD _script/nodejs-glibc.sh nodejs.sh
 RUN sh nodejs.sh
@@ -21,7 +21,7 @@ FROM base--image--alpine AS fetcher-musl
 
 ARG TARGETPLATFORM
 
-RUN apt update && apt full-upgrade -y && apt install -y wget curl
+RUN apk -U upgrade && apk --no-cache add wget curl
 
 ADD _script/nodejs-musl.sh nodejs.sh
 RUN sh nodejs.sh
