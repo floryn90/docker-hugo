@@ -5,7 +5,7 @@ IMPORT ../_imports/version_arg.df
 
 ARG TARGETPLATFORM
 
-RUN apt update && apt full-upgrade -y && apt install -y wget
+RUN apt update && apt full-upgrade -y && apt install -y wget curl
 
 #COPY --from=base--files--script /hugo-extended.sh hugo.sh
 ADD _script/hugo-extended.sh hugo.sh
@@ -26,6 +26,8 @@ FROM --platform=$BUILDPLATFORM base--image--alpine AS fetcher-standard
 IMPORT ../_imports/version_arg.df
 
 ARG TARGETPLATFORM
+
+RUN apt update && apt full-upgrade -y && apt install -y wget curl
 
 # RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 

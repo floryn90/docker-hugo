@@ -2,6 +2,8 @@ FROM base--image--alpine AS fetcher
 
 ARG TARGETPLATFORM
 
+RUN apt update && apt full-upgrade -y && apt install -y wget curl
+
 ADD _script/pandoc.sh pandoc.sh
 RUN sh pandoc.sh
 

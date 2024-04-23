@@ -2,6 +2,8 @@ FROM base--image--alpine AS fetcher-glibc
 
 ARG TARGETPLATFORM
 
+RUN apt update && apt full-upgrade -y && apt install -y wget curl
+
 ADD _script/nodejs-glibc.sh nodejs.sh
 RUN sh nodejs.sh
 
@@ -18,6 +20,8 @@ COPY --from=fetcher-glibc /files /
 FROM base--image--alpine AS fetcher-musl
 
 ARG TARGETPLATFORM
+
+RUN apt update && apt full-upgrade -y && apt install -y wget curl
 
 ADD _script/nodejs-musl.sh nodejs.sh
 RUN sh nodejs.sh
