@@ -8,7 +8,7 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    runs-on: floryn90-runners
 
     steps:
       - name: Checkout

@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: floryn90-runners
 
     steps:
       - name: Clean Workspace
@@ -20,6 +20,12 @@ jobs:
         
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install build essential
+        run: |
+          sudo apt-get update
+          sudo apt-get full-upgrade -y
+          sudo apt-get -y install build-essential wget
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
