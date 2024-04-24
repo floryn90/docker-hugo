@@ -25,7 +25,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get full-upgrade -y
-          sudo apt-get -y install build-essential      
+          sudo apt-get -y install build-essential wget
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
