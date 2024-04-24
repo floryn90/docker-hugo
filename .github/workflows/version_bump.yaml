@@ -15,6 +15,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: master
+      
+      - name: Install curl & gpg
+        run: apt update && apt -y install curl gpg && apt clean
 
       - name: Install gh cli
         run: |
