@@ -21,14 +21,14 @@ jobs:
 
       - name: Install gh cli
         run: |
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-          apt-get install dirmngr -y
-          apt-get update
-          apt-get install gh -y
-          apt-get autoclean
-          apt-get autoremove
-          rm -rf /var/lib/apt/lists/*
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt-get install dirmngr -y
+          sudo apt-get update
+          sduo apt-get install gh -y
+          sudo apt-get autoclean
+          sudo apt-get autoremove
+          sudo rm -rf /var/lib/apt/lists/*
 
       - name: Login to GitHub API
         run: |
