@@ -27,7 +27,7 @@ IMPORT ../_imports/version_arg.df
 
 ARG TARGETPLATFORM
 
-RUN apk -U upgrade && apk --no-cache add wget curl
+RUN apk -U upgrade && apk --no-cache add wget curl busybox-binsh
 
 # RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 

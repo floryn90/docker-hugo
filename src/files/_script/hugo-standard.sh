@@ -26,8 +26,8 @@ else
 fi
 
 # Download binaries from release
-curl -vv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILE} -O
-curl -vv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt -O
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILE}
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt
 
 # Verify checksums
 grep ${HUGO_FILE} hugo_${HUGO_VERSION}_checksums.txt | sha256sum -c

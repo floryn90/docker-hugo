@@ -27,8 +27,8 @@ else
 fi
 
 # Download binaries from release
-curl -vv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILE} -O
-curl -vv https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt -O
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILE}
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt
 #wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-extended-${HUGO_VERSION}-linux-${HUGOGURU_ARCH}.tar.gz
 #wget https://github.com/hugoguru/dist-hugo/releases/download/v${HUGO_VERSION}/hugo-${HUGO_VERSION}-checksums-sha256.txt
 
