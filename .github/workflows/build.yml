@@ -21,6 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install build essential
+        run: |
+          sudo apt-get update
+          sudo apt-get full-upgrade -y
+          sudo apt-get -y install build-essential      
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
