@@ -25,7 +25,7 @@ jobs:
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
           sudo apt-get install dirmngr -y
           sudo apt-get update
-          sduo apt-get install gh -y
+          sudo apt-get install gh -y
           sudo apt-get autoclean
           sudo apt-get autoremove
           sudo rm -rf /var/lib/apt/lists/*
