@@ -14,7 +14,7 @@ jobs:
 
     steps:      
       - name: Install curl & gpg
-        run: sudo apt update && sudo apt -y install curl gpg jq git && sudo apt clean
+        run: sudo apt update && sudo apt -y install curl gpg jq git build-essential && sudo apt clean
 
       - name: Install gh cli
         run: |
