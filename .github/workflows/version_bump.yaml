@@ -17,7 +17,7 @@ jobs:
           ref: master
       
       - name: Install curl & gpg
-        run: sudo apt update && sudo apt -y install curl gpg && sudo apt clean
+        run: sudo apt update && sudo apt -y install curl gpg jq && sudo apt clean
 
       - name: Install gh cli
         run: |
