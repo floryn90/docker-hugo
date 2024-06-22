@@ -1,29 +1,10 @@
-FROM base--image--alpine AS fetcher-glibc
+# Use the official Node.js Alpine image as the first stage
+FROM node:latest AS node
 
-ARG TARGETPLATFORM
-
-ADD _script/nodejs-glibc.sh nodejs.sh
-RUN sh nodejs.sh
-
-
-
-FROM scratch AS glibc
-
-COPY --from=fetcher-glibc /files /
-
-
-
-
-
-FROM base--image--alpine AS fetcher-musl
-
-ARG TARGETPLATFORM
-
-ADD _script/nodejs-musl.sh nodejs.sh
-RUN sh nodejs.sh
-
-
-
-FROM scratch AS musl
-
-COPY --from=fetcher-musl /files /
+# Copy Node.js, npm, and yarn related files and directories from the first stage to the second stage
+COPY --from=node /usr/lib /usr/lib                      # Libraries
+COPY --from=node /usr/local/share /usr/local/share      # Shared assets and data
+COPY --from=node /usr/local/lib /usr/local/lib          # More libraries
+COPY --from=node /usr/local/include /usr/local/include  # Header files
+COPY --from=node /usr/local/bin /usr/local/bin          # Binaries
+COPY --from=node /opt /opt                              # Optional software packages
