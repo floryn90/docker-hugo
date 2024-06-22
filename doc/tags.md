@@ -3,6 +3,15 @@
 Default minimal image based upon [Busybox](https://hub.docker.com/r/_/busybox/):
 * Aliases: `latest`, `busybox`, `busybox-ci`, `ci`, `busybox-onbuild`, `onbuild`
 <!-- * Hugo NEXT: `NEXT-busybox`, `NEXT`, `NEXT-busybox-ci`, `NEXT-ci`, `NEXT-busybox-onbuild`, `NEXT-onbuild` -->
+* Hugo 0.127.0: `0.127.0-busybox`, `0.127.0`, `0.127.0-busybox-ci`, `0.127.0-ci`, `0.127.0-busybox-onbuild`, `0.127.0-onbuild`
+* Hugo 0.126.3: `0.126.3-busybox`, `0.126.3`, `0.126.3-busybox-ci`, `0.126.3-ci`, `0.126.3-busybox-onbuild`, `0.126.3-onbuild`
+* Hugo 0.126.2: `0.126.2-busybox`, `0.126.2`, `0.126.2-busybox-ci`, `0.126.2-ci`, `0.126.2-busybox-onbuild`, `0.126.2-onbuild`
+* Hugo 0.126.1: `0.126.1-busybox`, `0.126.1`, `0.126.1-busybox-ci`, `0.126.1-ci`, `0.126.1-busybox-onbuild`, `0.126.1-onbuild`
+* Hugo 0.126.0: `0.126.0-busybox`, `0.126.0`, `0.126.0-busybox-ci`, `0.126.0-ci`, `0.126.0-busybox-onbuild`, `0.126.0-onbuild`
+* Hugo 0.125.7: `0.125.7-busybox`, `0.125.7`, `0.125.7-busybox-ci`, `0.125.7-ci`, `0.125.7-busybox-onbuild`, `0.125.7-onbuild`
+* Hugo 0.125.6: `0.125.6-busybox`, `0.125.6`, `0.125.6-busybox-ci`, `0.125.6-ci`, `0.125.6-busybox-onbuild`, `0.125.6-onbuild`
+* Hugo 0.125.5: `0.125.5-busybox`, `0.125.5`, `0.125.5-busybox-ci`, `0.125.5-ci`, `0.125.5-busybox-onbuild`, `0.125.5-onbuild`
+* Hugo 0.125.4: `0.125.4-busybox`, `0.125.4`, `0.125.4-busybox-ci`, `0.125.4-ci`, `0.125.4-busybox-onbuild`, `0.125.4-onbuild`
 * Hugo 0.125.3: `0.125.3-busybox`, `0.125.3`, `0.125.3-busybox-ci`, `0.125.3-ci`, `0.125.3-busybox-onbuild`, `0.125.3-onbuild`
 * Hugo 0.125.2: `0.125.2-busybox`, `0.125.2`, `0.125.2-busybox-ci`, `0.125.2-ci`, `0.125.2-busybox-onbuild`, `0.125.2-onbuild`
 * Hugo 0.125.1: `0.125.1-busybox`, `0.125.1`, `0.125.1-busybox-ci`, `0.125.1-ci`, `0.125.1-busybox-onbuild`, `0.125.1-onbuild`
@@ -79,6 +88,15 @@ Default minimal image based upon [Busybox](https://hub.docker.com/r/_/busybox/):
 Minimal image based upon [Alpine](https://hub.docker.com/r/_/alpine/):
 * Aliases: `alpine`, `alpine-ci`, `alpine-onbuild`, `ext-alpine`, `ext-alpine-ci`, `ext-alpine-onbuild`
 <!-- * Hugo NEXT: `NEXT-alpine`, `NEXT-alpine-ci`, `NEXT-alpine-onbuild`, `NEXT-ext-alpine`, `NEXT-ext-alpine-ci`, `NEXT-ext-alpine-onbuild` -->
+* Hugo 0.127.0: `0.127.0-alpine`, `0.127.0-alpine-ci`, `0.127.0-alpine-onbuild`, `0.127.0-ext-alpine`, `0.127.0-ext-alpine-ci`, `0.127.0-ext-alpine-onbuild`
+* Hugo 0.126.3: `0.126.3-alpine`, `0.126.3-alpine-ci`, `0.126.3-alpine-onbuild`, `0.126.3-ext-alpine`, `0.126.3-ext-alpine-ci`, `0.126.3-ext-alpine-onbuild`
+* Hugo 0.126.2: `0.126.2-alpine`, `0.126.2-alpine-ci`, `0.126.2-alpine-onbuild`, `0.126.2-ext-alpine`, `0.126.2-ext-alpine-ci`, `0.126.2-ext-alpine-onbuild`
+* Hugo 0.126.1: `0.126.1-alpine`, `0.126.1-alpine-ci`, `0.126.1-alpine-onbuild`, `0.126.1-ext-alpine`, `0.126.1-ext-alpine-ci`, `0.126.1-ext-alpine-onbuild`
+* Hugo 0.126.0: `0.126.0-alpine`, `0.126.0-alpine-ci`, `0.126.0-alpine-onbuild`, `0.126.0-ext-alpine`, `0.126.0-ext-alpine-ci`, `0.126.0-ext-alpine-onbuild`
+* Hugo 0.125.7: `0.125.7-alpine`, `0.125.7-alpine-ci`, `0.125.7-alpine-onbuild`, `0.125.7-ext-alpine`, `0.125.7-ext-alpine-ci`, `0.125.7-ext-alpine-onbuild`
+* Hugo 0.125.6: `0.125.6-alpine`, `0.125.6-alpine-ci`, `0.125.6-alpine-onbuild`, `0.125.6-ext-alpine`, `0.125.6-ext-alpine-ci`, `0.125.6-ext-alpine-onbuild`
+* Hugo 0.125.5: `0.125.5-alpine`, `0.125.5-alpine-ci`, `0.125.5-alpine-onbuild`, `0.125.5-ext-alpine`, `0.125.5-ext-alpine-ci`, `0.125.5-ext-alpine-onbuild`
+* Hugo 0.125.4: `0.125.4-alpine`, `0.125.4-alpine-ci`, `0.125.4-alpine-onbuild`, `0.125.4-ext-alpine`, `0.125.4-ext-alpine-ci`, `0.125.4-ext-alpine-onbuild`
 * Hugo 0.125.3: `0.125.3-alpine`, `0.125.3-alpine-ci`, `0.125.3-alpine-onbuild`, `0.125.3-ext-alpine`, `0.125.3-ext-alpine-ci`, `0.125.3-ext-alpine-onbuild`
 * Hugo 0.125.2: `0.125.2-alpine`, `0.125.2-alpine-ci`, `0.125.2-alpine-onbuild`, `0.125.2-ext-alpine`, `0.125.2-ext-alpine-ci`, `0.125.2-ext-alpine-onbuild`
 * Hugo 0.125.1: `0.125.1-alpine`, `0.125.1-alpine-ci`, `0.125.1-alpine-onbuild`, `0.125.1-ext-alpine`, `0.125.1-ext-alpine-ci`, `0.125.1-ext-alpine-onbuild`

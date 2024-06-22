@@ -5,19 +5,16 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+env:
+  GIT_DISCOVERY_ACROSS_FILESYSTEM: "true"
 
 jobs:
   update:
     runs-on: floryn90-runners
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: master
-      
+    steps:      
       - name: Install curl & gpg
-        run: sudo apt update && sudo apt -y install curl gpg && sudo apt clean
+        run: sudo apt update && sudo apt -y install curl gpg jq git build-essential && sudo apt clean
 
       - name: Install gh cli
         run: |
@@ -29,7 +26,12 @@ jobs:
           sudo apt-get autoclean
           sudo apt-get autoremove
           sudo rm -rf /var/lib/apt/lists/*
-
+          
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          
       - name: Login to GitHub API
         run: |
           echo ${{secrets.TOKEN_GITHUB}} > github_token.txt
