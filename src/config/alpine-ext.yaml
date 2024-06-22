@@ -15,6 +15,7 @@ images:
       - postcss
     platforms:
       - linux/amd64
+      - linux/arm64
 
   # Alpine + Hugo extended + CI
   ext-alpine-ci:
@@ -23,6 +24,7 @@ images:
       - $(VERSION)-ext-alpine-ci
     platforms:
       - linux/amd64
+      - linux/arm64
 
   # Alpine + Hugo extended + Onbuild
   ext-alpine-onbuild:
@@ -31,6 +33,7 @@ images:
       - $(VERSION)-ext-alpine-onbuild
     platforms:
       - linux/amd64
+      - linux/arm64
 
   # Alpine + Hugo extended + Asciidoctor
   ext-asciidoctor:
