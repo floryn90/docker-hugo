@@ -1,108 +1,108 @@
-name: Alpine (standard)
+name: Alpine (extended)
 
 images:
-  # Alpine + Hugo
-  alpine:
-    target: alpine
+  # Alpine + Hugo extended
+  ext-alpine:
+    target: ext-alpine
     edge: true
-    platforms:
-      - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
     alias:
-      - $(VERSION)-alpine
+      - $(VERSION)-ext-alpine
     tests:
       - hugo
-
-  # Alpine + Hugo + CI
-  alpine-ci:
-    target: alpine--ci
+      - golang
+      - node
+      - yarn
+      - postcss
     platforms:
       - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
-    alias:
-      - $(VERSION)-alpine-ci
 
-  # Alpine + Hugo + Onbuild
-  alpine-onbuild:
-    target: alpine--onbuild
+  # Alpine + Hugo extended + CI
+  ext-alpine-ci:
+    target: ext-alpine--ci
+    alias:
+      - $(VERSION)-ext-alpine-ci
     platforms:
       - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
-    alias:
-      - $(VERSION)-alpine-onbuild
 
-  # Alpine + Hugo + Asciidoctor
-  asciidoctor:
-    target: asciidoctor
-    edge: true
+  # Alpine + Hugo extended + Onbuild
+  ext-alpine-onbuild:
+    target: ext-alpine--onbuild
+    alias:
+      - $(VERSION)-ext-alpine-onbuild
     platforms:
       - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
+
+  # Alpine + Hugo extended + Asciidoctor
+  ext-asciidoctor:
+    target: ext-asciidoctor
     alias:
-      - "$(VERSION)-asciidoctor"
+      - $(VERSION)-ext-asciidoctor
     tests:
       - hugo
       - asciidoctor
-
-  # Alpine + Hugo + Asciidoctor + CI
-  asciidoctor-ci:
-    target: asciidoctor--ci
+      - golang
+      - node
+      - yarn
+      - postcss
     platforms:
       - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
-    alias:
-      - "$(VERSION)-asciidoctor-ci"
 
-  # Alpine + Hugo + Asciidoctor + Onbuild
-  asciidoctor-onbuild:
-    target: asciidoctor--onbuild
+  # Alpine + Hugo extended + Asciidoctor + CI
+  ext-asciidoctor-ci:
+    target: ext-asciidoctor--ci
+    alias:
+      - $(VERSION)-ext-asciidoctor-ci
     platforms:
       - linux/amd64
-      - linux/arm/v7
-      - linux/arm64
-    alias:
-      - "$(VERSION)-asciidoctor-onbuild"
 
-  # Alpine + Hugo + Pandoc
-  pandoc:
-    target: pandoc
-    edge: true
+  # Alpine + Hugo extended + Asciidoctor + Onbuild
+  ext-asciidoctor-onbuild:
+    target: ext-asciidoctor--onbuild
+    alias:
+      - $(VERSION)-ext-asciidoctor-onbuild
     platforms:
       - linux/amd64
-      - linux/arm64
+
+  # Alpine + Hugo extended + Pandoc
+  ext-pandoc:
+    target: ext-pandoc
     alias:
-      - $(VERSION)-pandoc
+      - $(VERSION)-ext-pandoc
     tests:
       - hugo
       - pandoc
-
-  # Alpine + Hugo + Pandoc + CI
-  pandoc-ci:
-    target: pandoc--ci
+      - golang
+      - node
+      - yarn
+      - postcss
+      - rst2html
     platforms:
       - linux/amd64
-      - linux/arm64
-    alias:
-      - $(VERSION)-pandoc-ci
 
-  # Alpine + Hugo + Pandoc + Onbuild
-  pandoc-onbuild:
-    target: pandoc--onbuild
+  # Alpine + Hugo extended + Pandoc + CI
+  ext-pandoc-ci:
+    target: ext-pandoc--ci
+    alias:
+      - $(VERSION)-ext-pandoc-ci
     platforms:
       - linux/amd64
-      - linux/arm64
+
+  # Alpine + Hugo extended + Pandoc + Onbuild
+  ext-pandoc-onbuild:
+    target: ext-pandoc--onbuild
     alias:
-      - $(VERSION)-pandoc-onbuild
+      - $(VERSION)-ext-pandoc-onbuild
+    platforms:
+      - linux/amd64
 
 tests:
   hugo:
     command: version
     expected: hugo
+
+  node:
+    entrypoint: node
+    command: --version
 
   asciidoctor:
     entrypoint: asciidoctor
@@ -113,3 +113,20 @@ tests:
     entrypoint: pandoc
     command: --version
     expected: pandoc-default
+
+  golang:
+    entrypoint: go
+    command: version
+    expected: go version
+
+  yarn:
+    entrypoint: yarn
+    command: --version
+
+  postcss:
+    entrypoint: postcss
+    command: --version
+
+  rst2html:
+    entrypoint: rst2html
+    command: --version
