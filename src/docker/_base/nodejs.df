@@ -31,7 +31,7 @@ RUN sh nodejs.sh
 
 
 # Use the official Node.js Alpine image as the first stage
-FROM node:latest-alpine AS node-base
+FROM node:current-alpine AS node-base
 
 # Initialize the second stage with your custom image
 FROM scratch AS musl
