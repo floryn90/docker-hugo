@@ -15,6 +15,8 @@ images:
       - postcss
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + CI
   ext-alpine-ci:
@@ -23,6 +25,8 @@ images:
       - $(VERSION)-ext-alpine-ci
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Onbuild
   ext-alpine-onbuild:
@@ -31,6 +35,8 @@ images:
       - $(VERSION)-ext-alpine-onbuild
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Asciidoctor
   ext-asciidoctor:
@@ -54,6 +60,8 @@ images:
       - $(VERSION)-ext-asciidoctor-ci
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Asciidoctor + Onbuild
   ext-asciidoctor-onbuild:
@@ -62,6 +70,8 @@ images:
       - $(VERSION)-ext-asciidoctor-onbuild
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Pandoc
   ext-pandoc:
@@ -78,6 +88,8 @@ images:
       - rst2html
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Pandoc + CI
   ext-pandoc-ci:
@@ -86,6 +98,8 @@ images:
       - $(VERSION)-ext-pandoc-ci
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
   # Alpine + Hugo extended + Pandoc + Onbuild
   ext-pandoc-onbuild:
@@ -94,6 +108,8 @@ images:
       - $(VERSION)-ext-pandoc-onbuild
     platforms:
       - linux/amd64
+      - linux/arm/v7
+      - linux/arm64
 
 tests:
   hugo:
