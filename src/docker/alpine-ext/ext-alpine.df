@@ -31,7 +31,7 @@ COPY --from=image / /
 RUN true \
  #
  # Install npm packages
- && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
+ && npm install -g autoprefixer postcss postcss-cli @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install rst2html
  && pip install --break-system-packages rst2html \
