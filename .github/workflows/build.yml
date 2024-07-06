@@ -102,8 +102,8 @@ jobs:
         uses: docker/scout-action@v1
         with:
           image: ${{ steps.meta.outputs.tags }}
-          command: compare
-          to-env: production
+          command: cves,quickview,compare
+          to-latest: true
           ignore-unchanged: true
           only-severities: critical,high
           organization: floryn90
