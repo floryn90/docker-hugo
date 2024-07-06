@@ -40,7 +40,7 @@ jobs:
             # mandatory
             -Dsonar.projectKey=floryn90
             -Dsonar.organization=florin-lungu
-            -Dsonar.sources=${{ github.workspace }}/src 
+            -Dsonar.sources=src 
             # optional, default is project base directory
             # When you need the analysis to take place in a directory other than the one from which it was launched
             #-Dsonar.projectBaseDir= # optional, default is .
