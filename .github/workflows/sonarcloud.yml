@@ -15,8 +15,12 @@ permissions:
 jobs:
   Analysis:
     runs-on: floryn90-runners
-    
+
     steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Analyze with SonarCloud         
 
         # You can pin the exact commit or the version.
