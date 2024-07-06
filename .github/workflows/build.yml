@@ -10,11 +10,21 @@ on:
 
   workflow_dispatch:
 
+permissions: 
+  contents: write
+  pull-requests: write
+  discussions: write
+  issues: write
+
 jobs:
   build:
     runs-on: floryn90-runners
 
     steps:
+      - name: Install curl & gpg
+        shell: bash
+        run: sudo apt update && sudo apt -y install curl gpg jq git && sudo apt clean
+
       - name: Clean Workspace
         uses: AutoModality/action-clean@v1
         
@@ -22,10 +32,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install build essential
+        shell: bash
         run: |
+
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt-get install dirmngr -y
           sudo apt-get update
-          sudo apt-get full-upgrade -y
-          sudo apt-get -y install build-essential wget
+          sudo apt-get install gh build-essential wget -y
+          sudo apt-get autoclean
+          sudo apt-get autoremove
+          sudo rm -rf /var/lib/apt/lists/*
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -39,17 +56,78 @@ jobs:
           username: floryn90
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Get previous release tag
+        id: release_tag
+        run: |
+          releases=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/gohugoio/hugo/releases?per_page=1&page=1)
+          release_tag=$(echo $releases | jq '.[0].tag_name' | sed 's/v//g' | sed 's/"//g')
+          echo "Latest release tag is ${release_tag}"
+          echo "latest_release_tag=${release_tag}" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: floryn90/hugo
+          # tags: |
+          #   type=raw,value=base
+          #   type=raw,value=alpine
+          #   type=raw,value=alpine-ci
+          #   type=raw,value=alpine-onbuild
+          #   type=raw,value=asciidoctor
+          #   type=raw,value=asciidoctor-ci
+          #   type=raw,value=asciidoctor-onbuild
+          #   type=raw,value=pandoc
+          #   type=raw,value=pandoc-ci
+          #   type=raw,value=pandoc-onbuild
+          #   type=raw,value=ext-alpine
+          #   type=raw,value=ext-alpine-ci
+          #   type=raw,value=ext-alpine-onbuild
+          #   type=raw,value=ext-asciidoctor
+          #   type=raw,value=ext-asciidoctor-ci
+          #   type=raw,value=ext-asciidoctor-onbuild
+          #   type=raw,value=ext-pandoc
+          #   type=raw,value=ext-pandoc-ci
+          #   type=raw,value=ext-pandoc-onbuild
+          #   type=raw,value=busybox
+          #   type=raw,value=busybox-ci
+          #   type=raw,value=busybox-onbuild
+          #   type=raw,value=debian
+          #   type=raw,value=debian-ci
+          #   type=raw,value=debian-onbuild
+          #   type=raw,value=ext-debian
+          #   type=raw,value=latest-ext
+          #   type=raw,value=ext-debian-ci
+          #   type=raw,value=ext-debian-onbuild
+          #   type=raw,value=ext-ci
+          #   type=raw,value=ext-onbuild
+          #   type=raw,value=ubuntu
+          #   type=raw,value=ubuntu-ci
+          #   type=raw,value=ubuntu-onbuild
+          #   type=raw,value=ext-ubuntu-ci
+          #   type=raw,value=ext-ubuntu-onbuild
 
       - name: Prepare
         run: make prepare
 
       - name: Build
         run: make build
+
+      # Compare the image built in the pull request with the one in production
+      # - name: Docker Scout
+      #   id: docker-scout
+      #   uses: docker/scout-action@v1
+      #   with:
+      #     image: ${{ steps.meta.outputs.tags }}
+      #     command: cves,quickview,compare
+      #     to: docker.io/${{ steps.meta.outputs.tags }}
+      #     ignore-unchanged: true
+      #     only-severities: critical,high
+      #     organization: floryn90
+      #     github-token: ${{ github.token }}
+
 
       - name: Upload target content
         uses: actions/upload-artifact@v4
