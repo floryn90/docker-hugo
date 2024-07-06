@@ -11,7 +11,6 @@ env:
 jobs:
   update:
     runs-on: floryn90-runners
-    container: ubuntu:latest
     steps:      
       - name: Install curl & gpg
         shell: bash
