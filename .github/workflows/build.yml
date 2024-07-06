@@ -71,43 +71,43 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: floryn90/hugo
-          tags: |
-            type=raw,value=base
-            type=raw,value=alpine
-            type=raw,value=alpine-ci
-            type=raw,value=alpine-onbuild
-            type=raw,value=asciidoctor
-            type=raw,value=asciidoctor-ci
-            type=raw,value=asciidoctor-onbuild
-            type=raw,value=pandoc
-            type=raw,value=pandoc-ci
-            type=raw,value=pandoc-onbuild
-            type=raw,value=ext-alpine
-            type=raw,value=ext-alpine-ci
-            type=raw,value=ext-alpine-onbuild
-            type=raw,value=ext-asciidoctor
-            type=raw,value=ext-asciidoctor-ci
-            type=raw,value=ext-asciidoctor-onbuild
-            type=raw,value=ext-pandoc
-            type=raw,value=ext-pandoc-ci
-            type=raw,value=ext-pandoc-onbuild
-            type=raw,value=busybox
-            type=raw,value=busybox-ci
-            type=raw,value=busybox-onbuild
-            type=raw,value=debian
-            type=raw,value=debian-ci
-            type=raw,value=debian-onbuild
-            type=raw,value=ext-debian
-            type=raw,value=latest-ext
-            type=raw,value=ext-debian-ci
-            type=raw,value=ext-debian-onbuild
-            type=raw,value=ext-ci
-            type=raw,value=ext-onbuild
-            type=raw,value=ubuntu
-            type=raw,value=ubuntu-ci
-            type=raw,value=ubuntu-onbuild
-            type=raw,value=ext-ubuntu-ci
-            type=raw,value=ext-ubuntu-onbuild
+          # tags: |
+          #   type=raw,value=base
+          #   type=raw,value=alpine
+          #   type=raw,value=alpine-ci
+          #   type=raw,value=alpine-onbuild
+          #   type=raw,value=asciidoctor
+          #   type=raw,value=asciidoctor-ci
+          #   type=raw,value=asciidoctor-onbuild
+          #   type=raw,value=pandoc
+          #   type=raw,value=pandoc-ci
+          #   type=raw,value=pandoc-onbuild
+          #   type=raw,value=ext-alpine
+          #   type=raw,value=ext-alpine-ci
+          #   type=raw,value=ext-alpine-onbuild
+          #   type=raw,value=ext-asciidoctor
+          #   type=raw,value=ext-asciidoctor-ci
+          #   type=raw,value=ext-asciidoctor-onbuild
+          #   type=raw,value=ext-pandoc
+          #   type=raw,value=ext-pandoc-ci
+          #   type=raw,value=ext-pandoc-onbuild
+          #   type=raw,value=busybox
+          #   type=raw,value=busybox-ci
+          #   type=raw,value=busybox-onbuild
+          #   type=raw,value=debian
+          #   type=raw,value=debian-ci
+          #   type=raw,value=debian-onbuild
+          #   type=raw,value=ext-debian
+          #   type=raw,value=latest-ext
+          #   type=raw,value=ext-debian-ci
+          #   type=raw,value=ext-debian-onbuild
+          #   type=raw,value=ext-ci
+          #   type=raw,value=ext-onbuild
+          #   type=raw,value=ubuntu
+          #   type=raw,value=ubuntu-ci
+          #   type=raw,value=ubuntu-onbuild
+          #   type=raw,value=ext-ubuntu-ci
+          #   type=raw,value=ext-ubuntu-onbuild
 
       - name: Prepare
         run: make prepare
@@ -116,17 +116,17 @@ jobs:
         run: make build
 
       # Compare the image built in the pull request with the one in production
-      - name: Docker Scout
-        id: docker-scout
-        uses: docker/scout-action@v1
-        with:
-          image: ${{ steps.meta.outputs.tags }}
-          command: cves,quickview,compare
-          to: docker.io/${{ steps.meta.outputs.tags }}
-          ignore-unchanged: true
-          only-severities: critical,high
-          organization: floryn90
-          github-token: ${{ github.token }}
+      # - name: Docker Scout
+      #   id: docker-scout
+      #   uses: docker/scout-action@v1
+      #   with:
+      #     image: ${{ steps.meta.outputs.tags }}
+      #     command: cves,quickview,compare
+      #     to: docker.io/${{ steps.meta.outputs.tags }}
+      #     ignore-unchanged: true
+      #     only-severities: critical,high
+      #     organization: floryn90
+      #     github-token: ${{ github.token }}
 
 
       - name: Upload target content

@@ -47,49 +47,49 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.TOKEN_GITHUB }}   
 
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: floryn90/hugo
-          tags: |
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-base
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-latest-ext
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-onbuild
+      # - name: Docker meta
+      #   id: meta
+      #   uses: docker/metadata-action@v5
+      #   with:
+      #     images: floryn90/hugo
+      #     tags: |
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-base
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-latest-ext
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-onbuild
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-ci
+      #       type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-onbuild
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -110,16 +110,16 @@ jobs:
           path: target
 
       # Compare the image built in the pull request with the one in production
-      - name: Docker Scout
-        id: docker-scout
-        uses: docker/scout-action@v1
-        with:
-          image: ${{ steps.meta.outputs.tags }}
-          command: cves,quickview,compare
-          to: docker.io/${{ steps.meta.outputs.tags }}
-          ignore-unchanged: true
-          only-severities: critical,high
-          organization: floryn90
+      # - name: Docker Scout
+      #   id: docker-scout
+      #   uses: docker/scout-action@v1
+      #   with:
+      #     image: ${{ steps.meta.outputs.tags }}
+      #     command: cves,quickview,compare
+      #     to: docker.io/${{ steps.meta.outputs.tags }}
+      #     ignore-unchanged: true
+      #     only-severities: critical,high
+      #     organization: floryn90
 
       - name: Push images
         if: startsWith(github.ref, 'refs/tags/')
