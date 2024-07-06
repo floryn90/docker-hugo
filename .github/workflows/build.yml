@@ -50,45 +50,45 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: floryn90/hugo
-          tags: |
-            type=edge,branch=$repo.default_branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{version}}-base
-            type=semver,pattern={{version}}-alpine
-            type=semver,pattern={{version}}-alpine-ci
-            type=semver,pattern={{version}}-alpine-onbuild
-            type=semver,pattern={{version}}-asciidoctor
-            type=semver,pattern={{version}}-asciidoctor-ci
-            type=semver,pattern={{version}}-asciidoctor-onbuild
-            type=semver,pattern={{version}}-pandoc
-            type=semver,pattern={{version}}-pandoc-ci
-            type=semver,pattern={{version}}-pandoc-onbuild
-            type=semver,pattern={{version}}-ext-alpine
-            type=semver,pattern={{version}}-ext-alpine-ci
-            type=semver,pattern={{version}}-ext-alpine-onbuild
-            type=semver,pattern={{version}}-ext-asciidoctor
-            type=semver,pattern={{version}}-ext-asciidoctor-ci
-            type=semver,pattern={{version}}-ext-asciidoctor-onbuild
-            type=semver,pattern={{version}}-ext-pandoc
-            type=semver,pattern={{version}}-ext-pandoc-ci
-            type=semver,pattern={{version}}-ext-pandoc-onbuild
-            type=semver,pattern={{version}}-busybox
-            type=semver,pattern={{version}}-busybox-ci
-            type=semver,pattern={{version}}-busybox-onbuild
-            type=semver,pattern={{version}}-debian
-            type=semver,pattern={{version}}-debian-ci
-            type=semver,pattern={{version}}-debian-onbuild
-            type=semver,pattern={{version}}-ext-debian
-            type=semver,pattern={{version}}-latest-ext
-            type=semver,pattern={{version}}-ext-debian-ci
-            type=semver,pattern={{version}}-ext-debian-onbuild
-            type=semver,pattern={{version}}-ext-ci
-            type=semver,pattern={{version}}-ext-onbuild
-            type=semver,pattern={{version}}-ubuntu
-            type=semver,pattern={{version}}-ubuntu-ci
-            type=semver,pattern={{version}}-ubuntu-onbuild
-            type=semver,pattern={{version}}-ext-ubuntu-ci
-            type=semver,pattern={{version}}-ext-ubuntu-onbuild
+          # tags: |
+          #   type=edge,branch=$repo.default_branch
+          #   type=semver,pattern={{version}}
+          #   type=semver,pattern={{version}}-base
+          #   type=semver,pattern={{version}}-alpine
+          #   type=semver,pattern={{version}}-alpine-ci
+          #   type=semver,pattern={{version}}-alpine-onbuild
+          #   type=semver,pattern={{version}}-asciidoctor
+          #   type=semver,pattern={{version}}-asciidoctor-ci
+          #   type=semver,pattern={{version}}-asciidoctor-onbuild
+          #   type=semver,pattern={{version}}-pandoc
+          #   type=semver,pattern={{version}}-pandoc-ci
+          #   type=semver,pattern={{version}}-pandoc-onbuild
+          #   type=semver,pattern={{version}}-ext-alpine
+          #   type=semver,pattern={{version}}-ext-alpine-ci
+          #   type=semver,pattern={{version}}-ext-alpine-onbuild
+          #   type=semver,pattern={{version}}-ext-asciidoctor
+          #   type=semver,pattern={{version}}-ext-asciidoctor-ci
+          #   type=semver,pattern={{version}}-ext-asciidoctor-onbuild
+          #   type=semver,pattern={{version}}-ext-pandoc
+          #   type=semver,pattern={{version}}-ext-pandoc-ci
+          #   type=semver,pattern={{version}}-ext-pandoc-onbuild
+          #   type=semver,pattern={{version}}-busybox
+          #   type=semver,pattern={{version}}-busybox-ci
+          #   type=semver,pattern={{version}}-busybox-onbuild
+          #   type=semver,pattern={{version}}-debian
+          #   type=semver,pattern={{version}}-debian-ci
+          #   type=semver,pattern={{version}}-debian-onbuild
+          #   type=semver,pattern={{version}}-ext-debian
+          #   type=semver,pattern={{version}}-latest-ext
+          #   type=semver,pattern={{version}}-ext-debian-ci
+          #   type=semver,pattern={{version}}-ext-debian-onbuild
+          #   type=semver,pattern={{version}}-ext-ci
+          #   type=semver,pattern={{version}}-ext-onbuild
+          #   type=semver,pattern={{version}}-ubuntu
+          #   type=semver,pattern={{version}}-ubuntu-ci
+          #   type=semver,pattern={{version}}-ubuntu-onbuild
+          #   type=semver,pattern={{version}}-ext-ubuntu-ci
+          #   type=semver,pattern={{version}}-ext-ubuntu-onbuild
 
       - name: Prepare
         run: make prepare
