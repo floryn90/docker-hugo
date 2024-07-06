@@ -51,6 +51,7 @@ jobs:
         with:
           images: floryn90/hugo
           tags: |
+            type=edge,branch=$repo.default_branch
             type=semver,pattern={{version}}
             type=semver,pattern={{version}}-base
             type=semver,pattern={{version}}-alpine
