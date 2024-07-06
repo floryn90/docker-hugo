@@ -72,8 +72,6 @@ jobs:
         with:
           images: floryn90/hugo
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
             type=raw,value=base
             type=raw,value=alpine
             type=raw,value=alpine-ci
