@@ -19,7 +19,6 @@ permissions:
 jobs:
   build:
     runs-on: floryn90-runners
-    container: ubuntu:latest
     steps:
       - name: Clean Workspace
         uses: AutoModality/action-clean@v1
