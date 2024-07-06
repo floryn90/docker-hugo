@@ -19,6 +19,45 @@ permissions:
 jobs:
   build:
     runs-on: floryn90-runners
+    strategy:
+      matrix:
+        image:
+          - base
+          - alpine
+          - alpine-ci
+          - alpine-onbuild
+          - asciidoctor
+          - asciidoctor-ci
+          - asciidoctor-onbuild
+          - pandoc
+          - pandoc-ci
+          - pandoc-onbuild
+          - ext-alpine
+          - ext-alpine-ci
+          - ext-alpine-onbuild
+          - ext-asciidoctor
+          - ext-asciidoctor-ci
+          - ext-asciidoctor-onbuild
+          - ext-pandoc
+          - ext-pandoc-ci
+          - ext-pandoc-onbuild
+          - busybox
+          - busybox-ci
+          - busybox-onbuild
+          - debian
+          - debian-ci
+          - debian-onbuild
+          - ext-debian
+          - latest-ext
+          - ext-debian-ci
+          - ext-debian-onbuild
+          - ext-ci
+          - ext-onbuild
+          - ubuntu
+          - ubuntu-ci
+          - ubuntu-onbuild
+          - ext-ubuntu-ci
+          - ext-ubuntu-onbuild
     steps:
       - name: Install curl & gpg
         shell: bash
@@ -71,43 +110,44 @@ jobs:
         with:
           images: floryn90/hugo
           tags: |
-            type=edge,branch=$repo.default_branch
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-base
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-latest-ext
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-onbuild
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-ci
-            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-onbuild
+            type=ref,event=branch
+            type=ref,event=pr
+            type=raw,value=base
+            type=raw,value=alpine
+            type=raw,value=alpine-ci
+            type=raw,value=alpine-onbuild
+            type=raw,value=asciidoctor
+            type=raw,value=asciidoctor-ci
+            type=raw,value=asciidoctor-onbuild
+            type=raw,value=pandoc
+            type=raw,value=pandoc-ci
+            type=raw,value=pandoc-onbuild
+            type=raw,value=ext-alpine
+            type=raw,value=ext-alpine-ci
+            type=raw,value=ext-alpine-onbuild
+            type=raw,value=ext-asciidoctor
+            type=raw,value=ext-asciidoctor-ci
+            type=raw,value=ext-asciidoctor-onbuild
+            type=raw,value=ext-pandoc
+            type=raw,value=ext-pandoc-ci
+            type=raw,value=ext-pandoc-onbuild
+            type=raw,value=busybox
+            type=raw,value=busybox-ci
+            type=raw,value=busybox-onbuild
+            type=raw,value=debian
+            type=raw,value=debian-ci
+            type=raw,value=debian-onbuild
+            type=raw,value=ext-debian
+            type=raw,value=latest-ext
+            type=raw,value=ext-debian-ci
+            type=raw,value=ext-debian-onbuild
+            type=raw,value=ext-ci
+            type=raw,value=ext-onbuild
+            type=raw,value=ubuntu
+            type=raw,value=ubuntu-ci
+            type=raw,value=ubuntu-onbuild
+            type=raw,value=ext-ubuntu-ci
+            type=raw,value=ext-ubuntu-onbuild
 
       - name: Prepare
         run: make prepare
@@ -118,16 +158,16 @@ jobs:
       # Compare the image built in the pull request with the one in production
       - name: Docker Scout
         id: docker-scout
-        if: ${{ github.event_name == 'pull_request' }}
         uses: docker/scout-action@v1
         with:
           image: ${{ steps.meta.outputs.tags }}
           command: cves,quickview,compare
-          to: docker.io/floryn90/hugo:${{ steps.meta.outputs.tags }}
+          to: docker.io/floryn90/hugo:${{ steps.release_tag.outputs.latest_release_tag }}-${{ matrix.image }}
           ignore-unchanged: true
           only-severities: critical,high
           organization: floryn90
           github-token: ${{ github.token }}
+
 
       - name: Upload target content
         uses: actions/upload-artifact@v4

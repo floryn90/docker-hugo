@@ -8,6 +8,45 @@ on:
 jobs:
   BuildImages:
     runs-on: floryn90-runners
+    strategy:
+      matrix:
+        image:
+          - base
+          - alpine
+          - alpine-ci
+          - alpine-onbuild
+          - asciidoctor
+          - asciidoctor-ci
+          - asciidoctor-onbuild
+          - pandoc
+          - pandoc-ci
+          - pandoc-onbuild
+          - ext-alpine
+          - ext-alpine-ci
+          - ext-alpine-onbuild
+          - ext-asciidoctor
+          - ext-asciidoctor-ci
+          - ext-asciidoctor-onbuild
+          - ext-pandoc
+          - ext-pandoc-ci
+          - ext-pandoc-onbuild
+          - busybox
+          - busybox-ci
+          - busybox-onbuild
+          - debian
+          - debian-ci
+          - debian-onbuild
+          - ext-debian
+          - latest-ext
+          - ext-debian-ci
+          - ext-debian-onbuild
+          - ext-ci
+          - ext-onbuild
+          - ubuntu
+          - ubuntu-ci
+          - ubuntu-onbuild
+          - ext-ubuntu-ci
+          - ext-ubuntu-onbuild
     steps:
       - name: Install curl & gpg
         shell: bash
@@ -52,43 +91,43 @@ jobs:
         with:
           images: floryn90/hugo
           tags: |
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-base
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-alpine
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-alpine-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-alpine-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-pandoc
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-busybox
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-busybox-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-busybox-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-debian
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-debian-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-debian-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-latest-ext
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-onbuild
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-ci
-            type=semver,pattern=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-base
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-alpine-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-asciidoctor-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-pandoc-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-alpine-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-asciidoctor-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-pandoc-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-busybox-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-debian-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-latest-ext
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-debian-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ubuntu-onbuild
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-ci
+            type=raw,value=${{steps.release_tag.outputs.latest_release_tag}}-ext-ubuntu-onbuild
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -115,7 +154,7 @@ jobs:
         with:
           image: ${{ steps.meta.outputs.tags }}
           command: cves,quickview,compare
-          to-latest: true
+          to: docker.io/floryn90/hugo:${{ steps.release_tag.outputs.latest_release_tag }}-${{ matrix.image }}
           ignore-unchanged: true
           only-severities: critical,high
           organization: floryn90
