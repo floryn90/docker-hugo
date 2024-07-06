@@ -10,6 +10,12 @@ on:
 
   workflow_dispatch:
 
+permissions: 
+  contents: write
+  pull-requests: write
+  discussions: write
+  issues: write
+
 jobs:
   build:
     runs-on: floryn90-runners
@@ -50,6 +56,17 @@ jobs:
 
       - name: Build
         run: make build
+
+      # Compare the image built in the pull request with the one in production
+      - name: Docker Scout
+        id: docker-scout
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: docker/scout-action@v1
+        with:
+          command: compare
+          to-env: production
+          ignore-unchanged: true
+          only-severities: critical,high
 
       - name: Upload target content
         uses: actions/upload-artifact@v4
