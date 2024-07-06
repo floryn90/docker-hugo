@@ -67,6 +67,7 @@ jobs:
           to-env: production
           ignore-unchanged: true
           only-severities: critical,high
+          organization: floryn90
 
       - name: Upload target content
         uses: actions/upload-artifact@v4
