@@ -8,45 +8,7 @@ on:
 jobs:
   BuildImages:
     runs-on: floryn90-runners
-    strategy:
-      matrix:
-        image:
-          - base
-          - alpine
-          - alpine-ci
-          - alpine-onbuild
-          - asciidoctor
-          - asciidoctor-ci
-          - asciidoctor-onbuild
-          - pandoc
-          - pandoc-ci
-          - pandoc-onbuild
-          - ext-alpine
-          - ext-alpine-ci
-          - ext-alpine-onbuild
-          - ext-asciidoctor
-          - ext-asciidoctor-ci
-          - ext-asciidoctor-onbuild
-          - ext-pandoc
-          - ext-pandoc-ci
-          - ext-pandoc-onbuild
-          - busybox
-          - busybox-ci
-          - busybox-onbuild
-          - debian
-          - debian-ci
-          - debian-onbuild
-          - ext-debian
-          - latest-ext
-          - ext-debian-ci
-          - ext-debian-onbuild
-          - ext-ci
-          - ext-onbuild
-          - ubuntu
-          - ubuntu-ci
-          - ubuntu-onbuild
-          - ext-ubuntu-ci
-          - ext-ubuntu-onbuild
+
     steps:
       - name: Install curl & gpg
         shell: bash
@@ -154,7 +116,7 @@ jobs:
         with:
           image: ${{ steps.meta.outputs.tags }}
           command: cves,quickview,compare
-          to: docker.io/floryn90/hugo:${{ steps.release_tag.outputs.latest_release_tag }}-${{ matrix.image }}
+          to: docker.io/${{ steps.meta.outputs.tags }}
           ignore-unchanged: true
           only-severities: critical,high
           organization: floryn90
