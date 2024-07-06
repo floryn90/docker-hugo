@@ -9,6 +9,10 @@ jobs:
   BuildImages:
     runs-on: floryn90-runners
     steps:
+      - name: Install curl & gpg
+        shell: bash
+        run: sudo apt update && sudo apt -y install curl gpg jq git && sudo apt clean
+
       - name: Clean Workspace
         uses: AutoModality/action-clean@v1
         
