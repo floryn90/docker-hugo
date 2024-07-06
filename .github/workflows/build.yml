@@ -62,6 +62,8 @@ jobs:
           release_tag=$(echo $releases | jq '.[0].tag_name' | sed 's/v//g' | sed 's/"//g')
           echo "Latest release tag is ${release_tag}"
           echo "latest_release_tag=${release_tag}" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
       - name: Docker meta
         id: meta
