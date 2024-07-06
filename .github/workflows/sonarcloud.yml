@@ -18,6 +18,7 @@ jobs:
     container: ubuntu:latest
     steps:
       - name: Install required tools
+        shell: bash
         run: |
           sudo apt update
           sudo apt install -y git curl
