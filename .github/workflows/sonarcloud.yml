@@ -15,7 +15,7 @@ permissions:
 jobs:
   Analysis:
     runs-on: floryn90-runners
-
+    container: ubuntu:latest
     steps:
       - name: Install required tools
         run: |

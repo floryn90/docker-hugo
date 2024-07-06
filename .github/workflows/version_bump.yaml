@@ -11,7 +11,7 @@ env:
 jobs:
   update:
     runs-on: floryn90-runners
-
+    container: ubuntu:latest
     steps:      
       - name: Install curl & gpg
         run: sudo apt update && sudo apt -y install curl gpg jq git build-essential && sudo apt clean
