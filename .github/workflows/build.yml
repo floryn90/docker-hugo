@@ -4,9 +4,13 @@ on:
   pull_request:
     branches: 
     - master
+    paths-ignore:
+      - '.github/**'
   push:
     branches: 
     - release/*
+    paths-ignore:
+      - '.github/**'
 
   workflow_dispatch:
 
