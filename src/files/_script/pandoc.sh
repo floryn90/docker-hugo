@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-PANDOC_VERSION="3.2.1"
+PANDOC_VERSION="3.3"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}

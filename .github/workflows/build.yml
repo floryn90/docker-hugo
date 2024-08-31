@@ -4,9 +4,13 @@ on:
   pull_request:
     branches: 
     - master
+    paths-ignore:
+      - '.github/**'
   push:
     branches: 
     - release/*
+    paths-ignore:
+      - '.github/**'
 
   workflow_dispatch:
 
@@ -33,8 +37,7 @@ jobs:
 
       - name: Install build essential
         shell: bash
-        run: |
-
+        run: |-
           curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
           sudo apt-get install dirmngr -y
@@ -72,43 +75,6 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: floryn90/hugo
-          # tags: |
-          #   type=raw,value=base
-          #   type=raw,value=alpine
-          #   type=raw,value=alpine-ci
-          #   type=raw,value=alpine-onbuild
-          #   type=raw,value=asciidoctor
-          #   type=raw,value=asciidoctor-ci
-          #   type=raw,value=asciidoctor-onbuild
-          #   type=raw,value=pandoc
-          #   type=raw,value=pandoc-ci
-          #   type=raw,value=pandoc-onbuild
-          #   type=raw,value=ext-alpine
-          #   type=raw,value=ext-alpine-ci
-          #   type=raw,value=ext-alpine-onbuild
-          #   type=raw,value=ext-asciidoctor
-          #   type=raw,value=ext-asciidoctor-ci
-          #   type=raw,value=ext-asciidoctor-onbuild
-          #   type=raw,value=ext-pandoc
-          #   type=raw,value=ext-pandoc-ci
-          #   type=raw,value=ext-pandoc-onbuild
-          #   type=raw,value=busybox
-          #   type=raw,value=busybox-ci
-          #   type=raw,value=busybox-onbuild
-          #   type=raw,value=debian
-          #   type=raw,value=debian-ci
-          #   type=raw,value=debian-onbuild
-          #   type=raw,value=ext-debian
-          #   type=raw,value=latest-ext
-          #   type=raw,value=ext-debian-ci
-          #   type=raw,value=ext-debian-onbuild
-          #   type=raw,value=ext-ci
-          #   type=raw,value=ext-onbuild
-          #   type=raw,value=ubuntu
-          #   type=raw,value=ubuntu-ci
-          #   type=raw,value=ubuntu-onbuild
-          #   type=raw,value=ext-ubuntu-ci
-          #   type=raw,value=ext-ubuntu-onbuild
 
       - name: Prepare
         shell: bash
@@ -118,31 +84,11 @@ jobs:
         shell: bash
         run: make build
 
-      # Compare the image built in the pull request with the one in production
-      # - name: Docker Scout
-      #   id: docker-scout
-      #   uses: docker/scout-action@v1
-      #   with:
-      #     image: ${{ steps.meta.outputs.tags }}
-      #     command: cves,quickview,compare
-      #     to: docker.io/${{ steps.meta.outputs.tags }}
-      #     ignore-unchanged: true
-      #     only-severities: critical,high
-      #     organization: floryn90
-      #     github-token: ${{ github.token }}
-
-
       - name: Upload target content
         uses: actions/upload-artifact@v4
         with:
           name: target
           path: target
-
-      # - name: Test Docsy
-      #   run: sudo make test-docsy
-
-      # - name: Test DocuAPI
-      #   run: sudo make test-docuapi
 
       - name: Push edge images
         if: "!startsWith(github.ref, 'refs/tags/')"
