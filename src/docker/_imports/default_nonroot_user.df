@@ -1,6 +1,3 @@
-FROM main
-
- 
 # Create a custom user with UID 1234 and GID 1234
 RUN groupadd -g 1234 hugo && \
     useradd -m -u 1234 -g hugo hugo \
