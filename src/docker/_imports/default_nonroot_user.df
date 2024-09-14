@@ -1,0 +1,8 @@
+FROM main as ext
+
+RUN  addgroup --gid 1000 hugo \
+    && adduser --uid 1000 --gid 1000 --disabled-password --gecos "" hugo \
+    && chown -R hugo /src \
+    && chown -R hugo /target
+
+USER hugo
