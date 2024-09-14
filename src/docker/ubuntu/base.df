@@ -20,5 +20,5 @@ RUN apt update \
 EXPOSE 1313
 
 WORKDIR /src
-
+USER hugo
 ENTRYPOINT ["hugo"]
