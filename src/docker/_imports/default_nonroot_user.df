@@ -1,4 +1,4 @@
-FROM main as ext
+FROM main
 
  
 # Create a custom user with UID 1234 and GID 1234
