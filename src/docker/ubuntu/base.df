@@ -18,7 +18,7 @@ RUN apt update \
  && chmod a+w /src /target 
 
 EXPOSE 1313
-
+IMPORT ../_imports/default_nonroot_user.df
 WORKDIR /src
 USER hugo
 ENTRYPOINT ["hugo"]
