@@ -1,8 +1,6 @@
-FROM base-ubuntu as main
+
 # Create a custom user with UID 1234 and GID 1234
-RUN groupadd -g 1234 hugo && \
-    useradd -m -u 1234 -g hugo hugo \
+RUN getent group hugo 2>&1 > /dev/null || groupadd -g 1234 hugo && \
+    getent passwd hugo 2>&1 > /dev/null || useradd -m -u 1234 -g hugo hugo \
     && chown -R hugo /src \
     && chown -R hugo /target
-
-USER hugo

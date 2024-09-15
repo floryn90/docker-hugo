@@ -1,15 +1,17 @@
 FROM ext-alpine AS main
 
+USER root
+
 RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && gem install coderay --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 
-
+IMPORT ../_imports/default_nonroot_user_alpine.df
 
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
 
-
-
 FROM main
+
+USER hugo
