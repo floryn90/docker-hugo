@@ -6,7 +6,7 @@ ENV HUGO_BIND="0.0.0.0" \
     HUGO_DESTINATION="public" \
     HUGO_ENV="DEV" \
     HOME="/tmp"
-
+USER root
 RUN apt update \
  && apt full-upgrade -y \
  && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
@@ -18,7 +18,7 @@ RUN apt update \
 COPY --from=base--files--debian / /
 
 EXPOSE 1313
-
+IMPORT ../_imports/default_nonroot_user.df
 WORKDIR /src
-
+USER hugo
 ENTRYPOINT ["hugo"]

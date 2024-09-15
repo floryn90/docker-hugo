@@ -9,6 +9,8 @@ ENV HUGO_BIND="0.0.0.0" \
 
 COPY --from=base--files--ubuntu / /
 
+USER root
+
 RUN apt update \
  && apt -y full-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
@@ -18,7 +20,9 @@ RUN apt update \
  && chmod a+w /src /target 
 
 EXPOSE 1313
-
+IMPORT ../_imports/default_nonroot_user.df
 WORKDIR /src
+
+USER hugo
 
 ENTRYPOINT ["hugo"]
