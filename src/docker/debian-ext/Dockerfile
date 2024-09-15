@@ -18,6 +18,8 @@ ENV HUGO_EDITION="extended" \
 
 COPY --from=image / /
 
+USER root
+
 RUN true \
  #
  # Install software
@@ -64,6 +66,8 @@ IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
 
-
+IMPORT ../_imports/default_nonroot_user.df
 
 FROM main
+
+USER hugo
