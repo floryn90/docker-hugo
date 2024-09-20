@@ -60,11 +60,11 @@ RUN true \
 
 COPY --from=base--golang / /
 
+IMPORT ../_imports/default_nonroot_user.df
+
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
-
-IMPORT ../_imports/default_nonroot_user.df
 
 FROM main
 

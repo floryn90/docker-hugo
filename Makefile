@@ -46,7 +46,7 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.16.2/buildx-v0.16.2.linux-amd64
+	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.17.1/buildx-v0.17.1.linux-amd64
 	@chmod a+x src/bin/buildx
 	@docker buildx create --use
 
