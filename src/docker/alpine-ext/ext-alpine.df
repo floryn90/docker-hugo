@@ -51,7 +51,11 @@ RUN true \
 
 EXPOSE 1313
 
+IMPORT ../_imports/default_nonroot_user_alpine.df
+
 WORKDIR /src
+
+USER hugo
 
 ENTRYPOINT ["hugo"]
 
