@@ -49,8 +49,6 @@ RUN true \
  # add /src to safe.directory
  && git config --global --add safe.directory /src
 
-
-
 EXPOSE 1313
 
 IMPORT ../_imports/default_nonroot_user_alpine.df
@@ -66,6 +64,8 @@ ENTRYPOINT ["hugo"]
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
+
+IMPORT ../_imports/default_nonroot_user_alpine.df
 
 
 FROM main
