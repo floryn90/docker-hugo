@@ -21,11 +21,9 @@ jobs:
   Analysis:
     runs-on: floryn90-runners
     steps:
-      - name: Install required tools
-        shell: bash
-        run: |
-          sudo apt update
-          sudo apt install -y git curl
+
+      - name: Install build essential
+        uses: ./github/actions/install_deps  
 
       - name: Checkout
         uses: actions/checkout@v4
