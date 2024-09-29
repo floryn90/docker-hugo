@@ -23,7 +23,7 @@ jobs:
     steps:
 
       - name: Install build essential
-        uses: ./github/actions/install_deps  
+        uses: ./.github/actions/install_deps  
 
       - name: Checkout
         uses: actions/checkout@v4
