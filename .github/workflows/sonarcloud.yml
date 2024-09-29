@@ -22,11 +22,11 @@ jobs:
     runs-on: floryn90-runners
     steps:
 
+      - name: Checkout
+        uses: actions/checkout@v4      
+
       - name: Install build essential
         uses: ./.github/actions/install_deps  
-
-      - name: Checkout
-        uses: actions/checkout@v4
 
       - name: Analyze with SonarCloud         
 

@@ -13,14 +13,14 @@ jobs:
     runs-on: floryn90-runners
     steps:      
 
-      - name: Install build essential
-        uses: ./.github/actions/install_deps  
-          
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: master
-  
+
+      - name: Install build essential
+        uses: ./.github/actions/install_deps  
+              
       - name: Check latest release tag
         id: hugo_tag
         shell: bash
