@@ -24,6 +24,7 @@ RUN true \
  #
  # Install software
  && apt update \
+ && apt -y autoremove \
  && apt -y full-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg apt-transport-https lsb-release \
  #
