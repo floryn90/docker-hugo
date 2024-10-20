@@ -7,3 +7,4 @@ RUN getent group hugo 2>&1 > /dev/null || groupadd -g 1234 hugo && \
     # add /src to safe.directory
     #&& git config --global --add safe.directory /src
 
+USER hugo

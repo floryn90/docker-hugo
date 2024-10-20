@@ -8,6 +8,8 @@ IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
 
+USER hugo
+
 FROM main
 
 USER hugo
