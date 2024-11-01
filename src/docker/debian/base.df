@@ -13,7 +13,7 @@ RUN apt update \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
- && chmod a+w /src /target
+ && chmod a+wrx /src /target
 
 COPY --from=base--files--debian / /
 
