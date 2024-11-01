@@ -17,7 +17,7 @@ RUN apt update \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
- && chmod a+w /src /target 
+ && chmod a+wrx /src /target 
 
 EXPOSE 1313
 IMPORT ../_imports/default_nonroot_user.df
