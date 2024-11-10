@@ -18,7 +18,10 @@ ENV HUGO_BIND="0.0.0.0" \
 
 COPY --from=image / /
 
+IMPORT ../_imports/default_nonroot_user_alpine.df
+
 RUN mkdir -p /src /target \
+ && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target
 
 EXPOSE 1313
@@ -33,3 +36,5 @@ IMPORT ../_imports/onbuild.df
 
 
 FROM main
+
+USER hugo

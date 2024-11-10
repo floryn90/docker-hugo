@@ -1,5 +1,2 @@
 RUN  getent group hugo 2>&1 > /dev/null || addgroup -g 1234 hugo \
     &&  getent passwd hugo 2>&1 > /dev/null || adduser -u 1234 -D -H -G hugo -g "" hugo 
-    # && chown -R hugo /src \
-    # && chown -R hugo /target
-USER hugo

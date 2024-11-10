@@ -30,6 +30,8 @@ RUN apk -U upgrade && apk add --no-cache libc6-compat gcompat libstdc++ openssl 
 
 COPY --from=image / /
 
+IMPORT ../_imports/default_nonroot_user_alpine.df
+
 RUN true \
  #
  # Install npm packages
@@ -44,6 +46,7 @@ RUN true \
  #
  # Prepare folders
  && mkdir -p /src /target \
+ && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target \
  #
  # add /src to safe.directory
@@ -51,23 +54,15 @@ RUN true \
 
 EXPOSE 1313
 
-IMPORT ../_imports/default_nonroot_user_alpine.df
-
 WORKDIR /src
 
 USER hugo
 
 ENTRYPOINT ["hugo"]
 
-
-
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
-
-IMPORT ../_imports/default_nonroot_user_alpine.df
-
-USER hugo
 
 FROM main
 
