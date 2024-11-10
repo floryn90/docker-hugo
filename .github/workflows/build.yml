@@ -23,6 +23,10 @@ permissions:
 jobs:
   build:
     runs-on: floryn90-runners
+    permissions:
+      id-token: write
+      contents: read
+      attestations: write
 
     steps:
 
