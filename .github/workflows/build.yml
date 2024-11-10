@@ -87,9 +87,9 @@ jobs:
         shell: bash
         run: make push-edge
 
-      - name: Attest
-        uses: actions/attest-build-provenance@v1
-        with:
-          subject-path: 'docker.io/floryn90/hugo'
-          subject-name: 'floryn90/hugo'
-          push-to-registry: true
+      # - name: Attest
+      #   uses: actions/attest-build-provenance@v1
+      #   with:
+      #     subject-path: 'docker.io/floryn90/hugo'
+      #     subject-name: 'floryn90/hugo'
+      #     push-to-registry: true
