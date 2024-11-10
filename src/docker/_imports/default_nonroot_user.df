@@ -2,9 +2,3 @@
 # Create a custom user with UID 1234 and GID 1234
 RUN getent group hugo 2>&1 > /dev/null || groupadd -g 1234 hugo && \
     getent passwd hugo 2>&1 > /dev/null || useradd -m -u 1234 -g hugo hugo 
-    # && chown -R hugo /src \
-    # && chown -R hugo /target \
-    # add /src to safe.directory
-    #&& git config --global --add safe.directory /src
-
-# USER hugo
