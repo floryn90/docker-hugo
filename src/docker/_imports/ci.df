@@ -1,6 +1,6 @@
 FROM main AS ci
 
 ENV HUGO_ENV="production"
-
+USER hugo
 ENTRYPOINT [ "" ]
 CMD [ "hugo" ]

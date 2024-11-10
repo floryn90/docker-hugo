@@ -7,18 +7,20 @@ ENV HUGO_BIND="0.0.0.0" \
     HUGO_ENV="DEV" \
     HOME="/tmp"
 USER root
+IMPORT ../_imports/default_nonroot_user.df
+
 RUN apt update \
  && apt full-upgrade -y \
  && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
+ && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target
 
 COPY --from=base--files--debian / /
 
 EXPOSE 1313
-IMPORT ../_imports/default_nonroot_user.df
 WORKDIR /src
 USER hugo
 ENTRYPOINT ["hugo"]

@@ -11,16 +11,18 @@ COPY --from=base--files--ubuntu / /
 
 USER root
 
+IMPORT ../_imports/default_nonroot_user.df
+
 RUN apt update \
  && apt -y full-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
+ && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target 
 
 EXPOSE 1313
-IMPORT ../_imports/default_nonroot_user.df
 WORKDIR /src
 
 USER hugo

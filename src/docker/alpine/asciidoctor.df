@@ -1,10 +1,9 @@
 FROM alpine AS main
 USER root
+IMPORT ../_imports/default_nonroot_user_alpine.df
 RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && gem install coderay asciidoctor-rouge --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
-
-IMPORT ../_imports/default_nonroot_user_alpine.df
 
 IMPORT ../_imports/ci.df
 

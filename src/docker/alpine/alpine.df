@@ -17,21 +17,20 @@ ENV HUGO_BIND="0.0.0.0" \
 
 COPY --from=image / /
 USER root
+IMPORT ../_imports/default_nonroot_user_alpine.df
 RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdata make \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
+ && chown -R hugo:hugo /src /target \
  && chmod a+rwx /src /target 
 
 EXPOSE 1313
-IMPORT ../_imports/default_nonroot_user_alpine.df
 WORKDIR /src
 ENTRYPOINT ["hugo"]
 
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
-
-IMPORT ../_imports/default_nonroot_user_alpine.df
 
 FROM main
 USER hugo
