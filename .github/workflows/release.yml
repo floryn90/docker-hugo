@@ -67,6 +67,12 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         shell: bash
         run: make push-release
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: 'floryn90/hugo'
+          push-to-registry: true        
       
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
