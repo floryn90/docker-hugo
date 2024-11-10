@@ -23,6 +23,10 @@ permissions:
 jobs:
   build:
     runs-on: floryn90-runners
+    permissions:
+      id-token: write
+      contents: read
+      attestations: write
 
     steps:
 
@@ -82,3 +86,10 @@ jobs:
         if: "!startsWith(github.ref, 'refs/tags/')"
         shell: bash
         run: make push-edge
+
+      # - name: Attest
+      #   uses: actions/attest-build-provenance@v1
+      #   with:
+      #     subject-path: 'docker.io/floryn90/hugo'
+      #     subject-name: 'floryn90/hugo'
+      #     push-to-registry: true
