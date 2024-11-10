@@ -30,9 +30,13 @@ COPY --from=base--hugo--extended / /files/hugo-extended
 
 RUN ls /files
 
+IMPORT ../_imports/default_nonroot_user_alpine.df
 
+USER hugo
 
 FROM scratch
 
 # Copy prepared files to root of base image
 COPY --from=combine /files /
+
+USER hugo

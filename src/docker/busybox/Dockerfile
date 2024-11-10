@@ -32,8 +32,11 @@ ENTRYPOINT ["hugo"]
 
 IMPORT ../_imports/ci.df
 
+USER hugo
+
 IMPORT ../_imports/onbuild.df
 
+USER hugo
 
 FROM main
 
