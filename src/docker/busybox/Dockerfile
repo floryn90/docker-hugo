@@ -24,6 +24,8 @@ RUN mkdir -p /src /target \
  && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target
 
+VOLUME [ "/src", "/target" ]
+
 EXPOSE 1313
 
 WORKDIR /src

@@ -22,6 +22,8 @@ RUN apt update \
  && chown -R hugo:hugo /src /target \
  && chmod a+wrx /src /target 
 
+VOLUME [ "/src", "/target" ]
+
 EXPOSE 1313
 WORKDIR /src
 

@@ -11,6 +11,7 @@ RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && chown -R hugo:hugo /src /target \
  && chmod -R a+rwx /src /target
 
+ VOLUME [ "/src", "/target" ]
 
 IMPORT ../_imports/ci.df
 

@@ -24,6 +24,9 @@ RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdat
  && chown -R hugo:hugo /src /target \
  && chmod a+rwx /src /target 
 
+VOLUME [ "/src", "/target" ]
+
+
 EXPOSE 1313
 WORKDIR /src
 ENTRYPOINT ["hugo"]

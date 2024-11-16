@@ -52,6 +52,8 @@ RUN true \
  # add /src to safe.directory
  && git config --global --add safe.directory /src
 
+VOLUME [ "/src", "/target" ]
+
 EXPOSE 1313
 
 WORKDIR /src

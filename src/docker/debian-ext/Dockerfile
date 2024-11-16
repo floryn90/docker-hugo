@@ -63,6 +63,8 @@ RUN true \
 
 COPY --from=base--golang / /
 
+VOLUME [ "/src", "/target" ]
+
 IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
