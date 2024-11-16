@@ -1,5 +1,7 @@
 FROM ext-alpine AS main
 
+VOLUME [ "/src", "/target" ]
+
 COPY --from=base--pandoc / /
 
 IMPORT ../_imports/default_nonroot_user_alpine.df

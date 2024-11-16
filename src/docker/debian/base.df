@@ -20,6 +20,8 @@ RUN apt update \
 
 COPY --from=base--files--debian / /
 
+VOLUME [ "/src", "/target" ]
+
 EXPOSE 1313
 WORKDIR /src
 USER hugo
