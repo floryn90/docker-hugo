@@ -12,7 +12,7 @@ ONBUILD ENV HUGO_DESTINATION="${HUGO_DESTINATION_ARG:-/target}" \
 
 ONBUILD COPY . /src
 ONBUILD WORKDIR ${HUGO_DIR:-/src}
-ONBUILD RUN chown -R hugoȘhugo /src /target
+ONBUILD RUN chown -R hugo:hugo /src /target
 ONBUILD USER hugo
 
 ONBUILD RUN if [ -e "$ONBUILD_SCRIPT_VALUE" ]; then exec sh $ONBUILD_SCRIPT_VALUE; else exec hugo $HUGO_CMD; fi
