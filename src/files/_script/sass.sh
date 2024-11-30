@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-SASS_EMBEDDED_VERSION="1.62.1"
+SASS_VERSION="1.81.0"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
@@ -21,12 +21,15 @@ else
 fi
 
 # Download
-wget https://github.com/sass/dart-sass-embedded/releases/download/${SASS_EMBEDDED_VERSION}/sass_embedded-${SASS_EMBEDDED_VERSION}-linux-${ARCH}.tar.gz \
-  -O /sass-embedded.tar.gz
+wget https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-${ARCH}.tar.gz \
+  -O /sass.tar.gz
 
 # Unpack
 mkdir -p /files/usr/local/lib /files/usr/local/bin
-tar -zxvf sass-embedded.tar.gz -C /files/usr/local/lib
+tar -zxvf sass.tar.gz -C /files/usr/local/lib
 
 # Create symlink
-ln -s /usr/local/lib/sass_embedded/dart-sass-embedded /files/usr/local/bin/dart-sass-embedded
+ln -s /usr/local/lib/dart-sass/sass /files/usr/local/bin/sass
+
+# Create alias for saas --embedded
+alias dart-sass-embedded="sass --embedded"
