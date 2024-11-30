@@ -32,4 +32,9 @@ tar -zxvf sass.tar.gz -C /files/usr/local/lib
 ln -s /usr/local/lib/dart-sass/sass /files/usr/local/bin/sass
 
 # Create alias for saas --embedded
-alias dart-sass-embedded="sass --embedded"
+mkdir -p /files/etc/profile.d /files/home/hugo
+echo 'alias dart-sass-embedded="sass --embedded"' > /files/etc/profile.d/dart-sass-embedded.sh
+echo 'alias dart-sass-embedded="sass --embedded"' > /files/home/hugo/.bash_aliases
+
+# Make script executable
+chmod a+x /files/etc/profile.d/dart-sass-embedded.sh

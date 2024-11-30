@@ -5,7 +5,7 @@ IMPORT ../_imports/version_arg
 ENV HUGO_BIND="0.0.0.0" \
     HUGO_DESTINATION="public" \
     HUGO_ENV="DEV" \
-    HOME="/tmp"
+    HOME="/home/hugo"
 USER root
 IMPORT ../_imports/default_nonroot_user.df
 
