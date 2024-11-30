@@ -14,7 +14,7 @@ ENV HUGO_BIND="0.0.0.0" \
     HUGO_DESTINATION="public" \
     HUGO_ENV="DEV" \
     HUGO_EDITION="standard" \
-    HOME="/tmp"
+    HOME="/home/hugo"
 
 COPY --from=image / /
 

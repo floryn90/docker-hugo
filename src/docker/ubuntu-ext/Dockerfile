@@ -2,7 +2,7 @@ FROM scratch as image
 
 COPY --from=base--hugo--extended / /
 COPY --from=base--pandoc / /
-COPY --from=base--sass-embedded / /
+COPY --from=base--sass / /
 #COPY --from=base--nodejs--glibc / /
 
 
@@ -60,8 +60,8 @@ RUN true \
  && chmod a+wrx /src /target \
  #
  # add /src to safe.directory
- && git config --global --add safe.directory /src
-
+ && git config --global --add safe.directory /src 
+ 
 COPY --from=base--golang / /
 
 VOLUME [ "/src", "/target" ]
