@@ -13,7 +13,16 @@ registries:
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directories: 
-      - "**/*" # Location of package manifests
+      - /src/docker/
+      - /src/docker/_base/
+      - /src/docker/_imports/
+      - /src/docker/alpine/
+      - /src/docker/alpine-ext/
+      - /src/docker/busybox/
+      - /src/docker/debian/
+      - /src/docker/debian-ext/
+      - /src/docker/ubuntu/
+      - /src/docker/ubuntu-ext/
     registries:
       - dockerhub
     target-branch: master
