@@ -1,20 +1,16 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 registries:
   dockerhub:
     type: docker-registry
     url: https://registry.hub.docker.com
     username: floryn90
-    password:  ${{ secrets.DOCKER_TOKEN }}
+    password: ${{ secrets.DOCKER_TOKEN }}  # Make sure the token is properly stored in GitHub secrets
+
 updates:
-  - package-ecosystem: "docker" # See documentation for possible values
+  - package-ecosystem: "docker"
     directories: 
-      - /src/docker/
-      - /src/docker/_base/
+      - /src/docker/               # Main Dockerfile directory (if it's in the root)
+      - /src/docker/_base/         # Subdirectories containing Dockerfiles
       - /src/docker/_imports/
       - /src/docker/alpine/
       - /src/docker/alpine-ext/
@@ -24,8 +20,9 @@ updates:
       - /src/docker/ubuntu/
       - /src/docker/ubuntu-ext/
     registries:
-      - dockerhub
-    target-branch: master
+      - dockerhub  # Docker registry to use for updates
+    target-branch: master  # The branch where Dependabot should create PRs
     schedule:
-      interval: "daily"
-
+      interval: "daily"  # The frequency of updates (can also be 'weekly', 'monthly', etc.)
+    commit-message:
+      prefix: "fix"  # Prefix for the commit message in Dependabot PRs (e.g., 'update', 'chore', etc.)
