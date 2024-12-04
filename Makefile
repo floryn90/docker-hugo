@@ -23,7 +23,7 @@ test: test-docsy test-docuapi
 
 test-docsy:
 	@rm -rf target/test/docsy
-	@git clone -b v0.10.0 https://github.com/google/docsy.git target/test/docsy
+	@git clone -b v0.11.0 https://github.com/google/docsy.git target/test/docsy
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) --entrypoint npm floryn90/hugo:ext-alpine install
 	@docker run --rm -i -v $$(pwd)/target/test/docsy:/src -u $$(id -u) floryn90/hugo:ext-alpine
 
@@ -43,7 +43,7 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.18.0/buildx-v0.18.0.linux-amd64
+	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.19.1/buildx-v0.19.1.linux-amd64
 	@chmod a+x src/bin/buildx
 	@docker buildx create --use
 
