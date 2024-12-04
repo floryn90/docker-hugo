@@ -9,16 +9,7 @@ registries:
 updates:
   - package-ecosystem: "docker"
     directories: 
-      - /src/docker/               # Main Dockerfile directory (if it's in the root)
-      - /src/docker/_base/         # Subdirectories containing Dockerfiles
-      - /src/docker/_imports/
-      - /src/docker/alpine/
-      - /src/docker/alpine-ext/
-      - /src/docker/busybox/
-      - /src/docker/debian/
-      - /src/docker/debian-ext/
-      - /src/docker/ubuntu/
-      - /src/docker/ubuntu-ext/
+      - /
     registries:
       - dockerhub  # Docker registry to use for updates
     target-branch: master  # The branch where Dependabot should create PRs
