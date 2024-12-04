@@ -13,7 +13,7 @@ registries:
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directories: 
-      - "/src/docker/*" # Location of package manifests
+      - "**/*" # Location of package manifests
     registries:
       - dockerhub
     target-branch: master
