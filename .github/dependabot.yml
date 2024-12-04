@@ -12,7 +12,8 @@ registries:
     password:  ${{ secrets.DOCKER_TOKEN }}
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/src/docker/**" # Location of package manifests
+    directories: 
+      - "/src/docker/*" # Location of package manifests
     registries:
       - dockerhub
     target-branch: master
