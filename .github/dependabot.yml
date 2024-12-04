@@ -9,7 +9,7 @@ registries:
 updates:
   - package-ecosystem: "docker"
     directories: 
-      - /
+      - "**/*"
     registries:
       - dockerhub  # Docker registry to use for updates
     target-branch: master  # The branch where Dependabot should create PRs
