@@ -8,7 +8,7 @@ ARG TARGETPLATFORM
 RUN apt update && apt full-upgrade -y && apt install -y wget
 
 #COPY --from=base--files--script /hugo-extended.sh hugo.sh
-ADD _script/hugo-extended.sh hugo.sh
+COPY _script/hugo-extended.sh hugo.sh
 RUN sh hugo.sh
 
 
@@ -30,7 +30,7 @@ ARG TARGETPLATFORM
 # RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 #COPY --from=base--files--scripts /hugo-standard.sh hugo.sh
-ADD _script/hugo-standard.sh hugo.sh
+COPY _script/hugo-standard.sh hugo.sh
 RUN sh hugo.sh
 
 

@@ -2,7 +2,7 @@ FROM base--image--alpine AS fetcher
 
 ARG TARGETPLATFORM
 
-ADD _script/sass.sh sass.sh
+COPY _script/sass.sh sass.sh
 RUN sh sass.sh
 
 
