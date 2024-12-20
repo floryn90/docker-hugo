@@ -2,10 +2,10 @@ FROM base--image--alpine AS fetcher
 
 ARG TARGETPLATFORM
 
-ADD _script/pandoc.sh pandoc.sh
+COPY _script/pandoc.sh pandoc.sh
 RUN sh pandoc.sh
 
-ADD pandoc /files
+COPY pandoc /files
 
 
 FROM scratch
