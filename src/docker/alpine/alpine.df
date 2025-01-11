@@ -21,7 +21,7 @@ IMPORT ../_imports/default_nonroot_user_alpine.df
 RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdata make \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target \
+ && chown -R hugo:hugo /src /target /home/hugo \
  && chmod a+rwx /src /target 
 
 VOLUME [ "/src", "/target" ]
