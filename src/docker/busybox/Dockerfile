@@ -21,7 +21,7 @@ COPY --from=image / /
 IMPORT ../_imports/default_nonroot_user_alpine.df
 
 RUN mkdir -p /src /target \
- && chown -R hugo:hugo /src /target \
+ && chown -R hugo:hugo /src /target /home/hugo \
  && chmod a+wrx /src /target
 
 VOLUME [ "/src", "/target" ]

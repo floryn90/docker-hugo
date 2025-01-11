@@ -56,7 +56,7 @@ RUN true \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target \
+ && chown -R hugo:hugo /src /target /home/hugo \
  && chmod a+wrx /src /target \
  #
  # add /src to safe.directory
