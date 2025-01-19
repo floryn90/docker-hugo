@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-GOLANG_VERSION="1.23.3"
+GOLANG_VERSION="1.23.5"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
