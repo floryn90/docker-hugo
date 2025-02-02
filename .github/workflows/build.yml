@@ -19,15 +19,12 @@ permissions:
   pull-requests: write
   discussions: write
   issues: write
+  id-token: write
+  attestations: write
 
 jobs:
   build:
     runs-on: floryn90-runners
-    permissions:
-      id-token: write
-      contents: read
-      attestations: write
-
     steps:
 
       - name: Clean Workspace
@@ -44,6 +41,9 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        id: setup-buildx
+        with:
+          version: latest
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -65,6 +65,14 @@ jobs:
         shell: bash
         run: make build
 
+#      - name: Get builded image tags
+#        id: export-images
+#        run: |
+#          images=$(docker images --filter reference=floryn90/hugo --format '"{{.Repository}}:{{.Tag}}"')
+#          echo -e "${images[@]}"
+#          echo "images=${{ toJson(env.iamges) }}" >> $GITHUB_OUTPUT
+        
+
       - name: Upload target content
         uses: actions/upload-artifact@v4
         with:
@@ -77,8 +85,8 @@ jobs:
         run: make push-edge
 
       # - name: Attest
-      #   uses: actions/attest-build-provenance@v1
+      #   uses: actions/attest-build-provenance@v2
       #   with:
-      #     subject-path: 'docker.io/floryn90/hugo'
-      #     subject-name: 'floryn90/hugo'
+      #     subject-name: 'docker.io/floryn90/hugo'
+      #     # subject-name: 'floryn90/hugo'
       #     push-to-registry: true

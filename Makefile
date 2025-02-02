@@ -17,6 +17,7 @@ prepare: src/bin/buildx
 		klakegg/docker-project-prepare:edge \
 		-t target/bundle
 	@sed -i "s:DOCKER_CLI_EXPERIMENTAL=enabled docker buildx:buildx:g" target/bundle/Makefile
+#	@sed -i 's:--progress plain \\:--progress plain \\\n                --annotation $(DOCKER_METADATA_OUTPUT_ANNOTATIONS) \\:g' target/bundle/Makefile
 	@sed -i "s:--push:--provenance=true --sbom=true --push:g" target/bundle/Makefile
 
 test: test-docsy test-docuapi
@@ -43,7 +44,7 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.19.3/buildx-v0.19.3.linux-amd64
+	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.20.1/buildx-v0.20.1.linux-amd64
 	@chmod a+x src/bin/buildx
 	@docker buildx create --use
 
