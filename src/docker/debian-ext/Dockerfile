@@ -46,8 +46,7 @@ RUN true \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install Asciidoctor
- && DEBIAN_FRONTEND=noninteractive apt install -y ruby \
- && gem install asciidoctor coderay --no-document \
+ && DEBIAN_FRONTEND=noninteractive apt install -y ruby asciidoctor coderay \
  #
  # Cleaning up
  && apt remove -y curl gnupg apt-transport-https lsb-release python3-pip python3-setuptools python3-wheel \
