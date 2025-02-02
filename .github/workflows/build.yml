@@ -68,7 +68,7 @@ jobs:
       - name: Get builded image tags
         id: export-images
         run: |
-          images=$(docker images --filter reference=floryn90/hugo --format '{{.Repository}}:{{.Tag}}')
+          images=$(docker images --filter reference=floryn90/hugo --format '"{{.Repository}}:{{.Tag}}"')
           echo -e "${images[@]}"
           echo "images=\"${images[@]}\"" >> $GITHUB_OUTPUT
         
