@@ -41,6 +41,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        id: setup-buildx
         with:
           version: latest
 
@@ -64,16 +65,32 @@ jobs:
         shell: bash
         run: make build
 
+      - name: Get builded image tags
+        id: export-images
+        run: |
+          images=$(docker images --filter reference=floryn90/hugo --format '{{.Repository}}:{{.Tag}}')
+          echo "images=${images}" >> $GITHUB_OUTPUT
+        
+
       - name: Upload target content
         uses: actions/upload-artifact@v4
         with:
           name: target
           path: target
 
-      - name: Push edge images
-        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
-        shell: bash
-        run: make push-edge
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          platforms: ${{ steps.setup-buildx.outputs.platforms }}
+          load: true
+          tags: ${{ steps.export-images.outputs.images}}     
+          labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+
+      # - name: Push edge images
+      #   if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+      #   shell: bash
+      #   run: make push-edge
 
       # - name: Attest
       #   uses: actions/attest-build-provenance@v2
