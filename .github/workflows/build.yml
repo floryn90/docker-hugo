@@ -70,7 +70,7 @@ jobs:
         run: |
           images=$(docker images --filter reference=floryn90/hugo --format '"{{.Repository}}:{{.Tag}}"')
           echo -e "${images[@]}"
-          echo "images=\"${images[@]}\"" >> $GITHUB_OUTPUT
+          echo "images=${{ toJson(env.iamges) }}" >> $GITHUB_OUTPUT
         
 
       - name: Upload target content
@@ -84,7 +84,7 @@ jobs:
         with:
           platforms: ${{ steps.setup-buildx.outputs.platforms }}
           load: true
-          tags: ${{ steps.export-images.outputs.images}}     
+          tags: ${{ fromJson(steps.export-images.outputs.images) }}     
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
 
