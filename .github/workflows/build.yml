@@ -70,7 +70,7 @@ jobs:
         run: |
           images=$(docker images --filter reference=floryn90/hugo --format '{{.Repository}}:{{.Tag}}')
           echo -e "${images[@]}"
-          echo "images=${images[@]}" >> $GITHUB_OUTPUT
+          echo "images=\"${images[@]}\"" >> $GITHUB_OUTPUT
         
 
       - name: Upload target content
