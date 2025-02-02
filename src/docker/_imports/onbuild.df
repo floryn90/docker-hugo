@@ -15,5 +15,5 @@ ONBUILD WORKDIR ${HUGO_DIR:-/src}
 ONBUILD USER root
 ONBUILD RUN chown -R hugo:hugo /src /target
 ONBUILD USER hugo
-
+USER hugo
 ONBUILD RUN if [ -e "$ONBUILD_SCRIPT_VALUE" ]; then exec sh $ONBUILD_SCRIPT_VALUE; else exec hugo $HUGO_CMD; fi
