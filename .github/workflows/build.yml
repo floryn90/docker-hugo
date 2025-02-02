@@ -65,12 +65,12 @@ jobs:
         shell: bash
         run: make build
 
-      - name: Get builded image tags
-        id: export-images
-        run: |
-          images=$(docker images --filter reference=floryn90/hugo --format '"{{.Repository}}:{{.Tag}}"')
-          echo -e "${images[@]}"
-          echo "images=${{ toJson(env.iamges) }}" >> $GITHUB_OUTPUT
+#      - name: Get builded image tags
+#        id: export-images
+#        run: |
+#          images=$(docker images --filter reference=floryn90/hugo --format '"{{.Repository}}:{{.Tag}}"')
+#          echo -e "${images[@]}"
+#          echo "images=${{ toJson(env.iamges) }}" >> $GITHUB_OUTPUT
         
 
       - name: Upload target content
@@ -79,19 +79,10 @@ jobs:
           name: target
           path: target
 
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          platforms: ${{ steps.setup-buildx.outputs.platforms }}
-          load: true
-          tags: ${{ fromJson(steps.export-images.outputs.images) }}     
-          labels: ${{ steps.meta.outputs.labels }}
-          annotations: ${{ steps.meta.outputs.annotations }}
-
-      # - name: Push edge images
-      #   if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
-      #   shell: bash
-      #   run: make push-edge
+      - name: Push edge images
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+        shell: bash
+        run: make push-edge
 
       # - name: Attest
       #   uses: actions/attest-build-provenance@v2
