@@ -19,15 +19,12 @@ permissions:
   pull-requests: write
   discussions: write
   issues: write
+  id-token: write
+  attestations: write
 
 jobs:
   build:
     runs-on: floryn90-runners
-    permissions:
-      id-token: write
-      contents: read
-      attestations: write
-
     steps:
 
       - name: Clean Workspace
@@ -46,12 +43,6 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           version: latest
-          driver: docker
-          driver-opts: |
-            image=moby/buildkit:master
-            network=host
-            default-load=true
-          platforms: linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/arm64,linux/riscv64,linux/ppc64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
 
       - name: Docker login
         uses: docker/login-action@v3
@@ -84,9 +75,9 @@ jobs:
         shell: bash
         run: make push-edge
 
-      # - name: Attest
-      #   uses: actions/attest-build-provenance@v1
-      #   with:
-      #     subject-path: 'docker.io/floryn90/hugo'
-      #     subject-name: 'floryn90/hugo'
-      #     push-to-registry: true
+      - name: Attest
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: 'docker.io/floryn90/hugo'
+          # subject-name: 'floryn90/hugo'
+          push-to-registry: true
