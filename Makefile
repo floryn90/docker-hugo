@@ -17,7 +17,7 @@ prepare: src/bin/buildx
 		klakegg/docker-project-prepare:edge \
 		-t target/bundle
 	@sed -i "s:DOCKER_CLI_EXPERIMENTAL=enabled docker buildx:buildx:g" target/bundle/Makefile
-	@sed -i 's:--progress plain \\:--progress plain \\\n                --annotation "${DOCKER_METADATA_OUTPUT_ANNOTATIONS}"\\:g' target/bundle/Makefile
+	@sed -i 's:--progress plain \\:--progress plain \\\n                --annotation \"${DOCKER_METADATA_OUTPUT_ANNOTATIONS}\" \\:g' target/bundle/Makefile
 	@sed -i "s:--push:--provenance=true --sbom=true --push:g" target/bundle/Makefile
 
 test: test-docsy test-docuapi
