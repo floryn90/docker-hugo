@@ -17,7 +17,7 @@ ENV HUGO_BIND="0.0.0.0" \
     HUGO_ENV="DEV" \
     HUGO_EDITION="extended" \
     HUGO_CACHEDIR="/tmp" \
-    NODE_PATH=".:/usr/local/lib/node_modules:/usr/local/node/lib/node_modules" \
+    NODE_PATH=".:/usr/local/lib/node_modules" \
     PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/node/bin" \
     GOROOT="/usr/local/lib/go" \
     HOME="/home/hugo"
@@ -46,7 +46,7 @@ RUN true \
  #
  # Prepare folders
  && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo \
+ && chown -R hugo:hugo /src /target /home/hugo /usr/local/lib/node_modules \
  && chmod a+wrx /src /target \
  #
  # add /src to safe.directory
