@@ -46,7 +46,7 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/latest/download/buildx-$(shell wget -qO- https://api.github.com/repos/docker/buildx/releases/latest | grep -Po '"tag_name": "\K.*?(?=")').linux-amd64
+	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/latest/download/buildx-$(shell wget -qO- https://api.github.com/repos/docker/buildx/releases/latest | grep -o '"tag_name": "[^"]*' | grep -o '[^"]*$').linux-amd64
 	@chmod a+x src/bin/buildx
 	@docker buildx create --use
 
