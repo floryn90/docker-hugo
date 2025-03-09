@@ -1,3 +1,10 @@
 #!/bin/sh
 
-echo -n $(cat $(__project_path)/project.yaml | grep version | head -1 | cut -d ':' -f 2)
+# Define the project path
+project_path=$(__project_path)
+
+# Extract the version from the project.yaml file
+version=$(grep -m 1 'version' "$project_path/project.yaml" | awk -F': ' '{print $2}')
+
+# Print the version
+echo -n "$version"

@@ -1,3 +1,10 @@
 #!/bin/sh
 
-echo -n $(dirname $(dirname $(realpath $0)))
+# Get the directory of the script
+script_dir=$(realpath "$(dirname "$0")")
+
+# Get the parent directory of the script directory
+parent_dir=$(dirname "$script_dir")
+
+# Print the parent directory
+echo "$parent_dir"
