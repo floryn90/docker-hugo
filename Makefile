@@ -1,5 +1,7 @@
 PATH=$(shell pwd)/src/bin:$(shell echo $$PATH)
 
+.PHONY: default build clean build-debug prepare test test-docsy test-docuapi push-edge push-release bump enable-qemu
+
 default: clean prepare build
 
 build:
@@ -44,7 +46,7 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@wget -q -O src/bin/buildx https://github.com/docker/buildx/releases/download/v0.20.1/buildx-v0.20.1.linux-amd64
+	@curl -sL -o src/bin/buildx https://github.com/docker/buildx/releases/latest/download/buildx-$(shell curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r .tag_name).linux-amd64
 	@chmod a+x src/bin/buildx
 	@docker buildx create --use
 

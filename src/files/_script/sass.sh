@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-SASS_VERSION="1.83.4"
+SASS_VERSION="1.85.1"
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}

@@ -4,4 +4,4 @@ FROM busybox:latest AS busybox
 
 FROM debian:stable-slim AS debian
 
-FROM ubuntu:24.10 AS ubuntu
+FROM ubuntu:rolling AS ubuntu
