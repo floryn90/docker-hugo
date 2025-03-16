@@ -45,6 +45,6 @@ tests:
     expected: hugo
     
   defaultuser:
-    entrypoint: whoami
-    command: $USER
-    expected: hugo
+    entrypoint: id
+    command: -u
+    expected: "1234"  
