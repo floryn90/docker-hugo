@@ -1,0 +1,70 @@
+name: Enforce Proper Review Engagement
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  check_review_engagement:
+    name: Ensure Reviewer Engagement
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR Review Quality
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const reviewer = context.payload.review.user.login;
+
+            // Obținem data creării PR-ului și a aprobării review-ului
+            const prCreatedAt = new Date(context.payload.pull_request.created_at);
+            const reviewSubmittedAt = new Date(context.payload.review.submitted_at);
+            const timeDiffMinutes = (reviewSubmittedAt - prCreatedAt) / (1000 * 60); // Timpul în minute
+
+            // Setăm un timp minim de 5 minute între deschiderea PR-ului și aprobarea lui
+            const MIN_REVIEW_TIME = 5;
+
+            if (timeDiffMinutes < MIN_REVIEW_TIME) {
+              core.setFailed(`PR-ul a fost aprobat prea repede! Timp minim necesar: ${MIN_REVIEW_TIME} minute.`);
+            }
+
+            // Obținem lista fișierelor modificate în PR
+            const files = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+
+            const totalFiles = files.data.length;
+            console.log(`PR conține ${totalFiles} fișiere.`);
+
+            // Obținem toate review-urile pentru acest PR
+            const reviews = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+
+            let viewedFiles = new Set();
+
+            for (const review of reviews.data) {
+              if (review.user.login === reviewer) {
+                // Obținem comentariile de review asociate acestui user
+                const comments = await github.rest.pulls.listReviewComments({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  review_id: review.id
+                });
+
+                comments.data.forEach(comment => viewedFiles.add(comment.path));
+              }
+            }
+
+            console.log(`Reviewerul ${reviewer} a marcat ${viewedFiles.size} fișiere din ${totalFiles} ca vizualizate.`);
+
+            if (viewedFiles.size < totalFiles) {
+              core.setFailed(`Reviewerul ${reviewer} NU a vizualizat toate fișierele!`);
+            }
