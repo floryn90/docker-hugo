@@ -11,5 +11,5 @@ images:
 tests:    
   defaultuser:
     entrypoint: whoami
-    command: $USER
+    command: $$USER
     expected: hugo
