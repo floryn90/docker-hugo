@@ -13,6 +13,7 @@ images:
       - $(VERSION)-ubuntu
     tests:
       - hugo
+      - defaultuser
 
   # Ubuntu + Hugo + CI
   ubuntu-ci:
@@ -23,6 +24,8 @@ images:
       - linux/arm64
     alias:
       - $(VERSION)-ubuntu-ci
+    tests:
+      - defaultuser
 
   # Ubuntu + Hugo + Onbuild
   ubuntu-onbuild:
@@ -33,8 +36,15 @@ images:
       - linux/arm64
     alias:
       - $(VERSION)-ubuntu-onbuild
+    tests:
+      - defaultuser
 
 tests:
   hugo:
     command: version
     expected: hugo
+    
+  defaultuser:
+    entrypoint: id
+    command: -u
+    expected: "1234"  

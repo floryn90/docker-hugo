@@ -15,6 +15,7 @@ images:
       - $(VERSION)-busybox
     tests:
       - hugo
+      - defaultuser
 
   # Busybox + Hugo + CI
   busybox-ci:
@@ -27,6 +28,8 @@ images:
       - $(VERSION)-busybox-ci
       - $(VERSION)-ci
       - ci
+    tests:
+      - defaultuser
 
   # Busybox + Hugo + Onbuild
   busybox-onbuild:
@@ -39,8 +42,15 @@ images:
       - $(VERSION)-busybox-onbuild
       - $(VERSION)-onbuild
       - onbuild
+    tests:
+      - defaultuser
 
 tests:
   hugo:
     command: version
     expected: hugo
+    
+  defaultuser:
+    entrypoint: id
+    command: -u
+    expected: "1234"  

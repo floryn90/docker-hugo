@@ -19,6 +19,7 @@ images:
       - yarn
       - postcss
       - rst2html
+      - defaultuser
     platforms:
       - linux/amd64
       - linux/arm64
@@ -33,6 +34,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Debian + Hugo extended + Onbuild
   ext-debian-onbuild:
@@ -44,6 +47,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
 tests:
   hugo:
@@ -80,3 +85,8 @@ tests:
   rst2html:
     entrypoint: rst2html
     command: --version
+    
+  defaultuser:
+    entrypoint: id
+    command: -u
+    expected: "1234"  

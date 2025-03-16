@@ -13,6 +13,7 @@ images:
       - node
       - yarn
       - postcss
+      - defaultuser
     platforms:
       - linux/amd64
       - linux/arm64
@@ -25,6 +26,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Alpine + Hugo extended + Onbuild
   ext-alpine-onbuild:
@@ -34,6 +37,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Alpine + Hugo extended + Asciidoctor
   ext-asciidoctor:
@@ -47,6 +52,7 @@ images:
       - node
       - yarn
       - postcss
+      - defaultuser
     platforms:
       - linux/amd64
       - linux/arm64
@@ -59,6 +65,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Alpine + Hugo extended + Asciidoctor + Onbuild
   ext-asciidoctor-onbuild:
@@ -68,6 +76,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Alpine + Hugo extended + Pandoc
   ext-pandoc:
@@ -82,6 +92,7 @@ images:
       - yarn
       - postcss
       - rst2html
+      - defaultuser
     platforms:
       - linux/amd64
       - linux/arm64
@@ -94,6 +105,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Alpine + Hugo extended + Pandoc + Onbuild
   ext-pandoc-onbuild:
@@ -103,6 +116,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
 tests:
   hugo:
@@ -139,3 +154,8 @@ tests:
   rst2html:
     entrypoint: rst2html
     command: --version
+
+  defaultuser:
+    entrypoint: id
+    command: -u
+    expected: "1234"   
