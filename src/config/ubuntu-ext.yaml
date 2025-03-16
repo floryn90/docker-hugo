@@ -16,6 +16,7 @@ images:
       - yarn
       - postcss
       - rst2html
+      - defaultuser
     platforms:
       - linux/amd64
       - linux/arm64
@@ -28,6 +29,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
   # Ubuntu + Hugo extended + Onbuild
   ext-ubuntu-onbuild:
@@ -37,6 +40,8 @@ images:
     platforms:
       - linux/amd64
       - linux/arm64
+    tests:
+      - defaultuser
 
 tests:
   hugo:
@@ -74,7 +79,7 @@ tests:
     entrypoint: rst2html
     command: --version
     
-  default-user:
+  defaultuser:
     entrypoint: whoami
     command: $USER
     expected: hugo

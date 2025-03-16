@@ -13,6 +13,7 @@ images:
       - $(VERSION)-debian
     tests:
       - hugo
+      - defaultuser
 
   # Debian + Hugo + CI
   debian-ci:
@@ -23,6 +24,8 @@ images:
       - linux/arm64
     alias:
       - $(VERSION)-debian-ci
+    tests:
+      - defaultuser
 
   # Debian + Hugo + Onbuild
   debian-onbuild:
@@ -33,13 +36,15 @@ images:
       - linux/arm64
     alias:
       - $(VERSION)-debian-onbuild
+    tests:
+      - defaultuser
 
 tests:
   hugo:
     command: version
     expected: hugo
     
-  default-user:
+  defaultuser:
     entrypoint: whoami
     command: $USER
     expected: hugo
