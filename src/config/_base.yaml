@@ -5,3 +5,9 @@ images:
     target: base
     alias:
       - $(VERSION)-base
+
+tests:    
+  default-user:
+    entrypoint: whoami
+    command: $USER
+    expected: hugo

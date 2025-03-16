@@ -73,3 +73,8 @@ tests:
   rst2html:
     entrypoint: rst2html
     command: --version
+    
+  default-user:
+    entrypoint: whoami
+    command: $USER
+    expected: hugo

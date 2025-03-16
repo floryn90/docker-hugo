@@ -38,3 +38,8 @@ tests:
   hugo:
     command: version
     expected: hugo
+    
+  default-user:
+    entrypoint: whoami
+    command: $USER
+    expected: hugo

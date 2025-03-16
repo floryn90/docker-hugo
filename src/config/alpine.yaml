@@ -113,3 +113,8 @@ tests:
     entrypoint: pandoc
     command: --version
     expected: pandoc-default
+    
+  default-user:
+    entrypoint: whoami
+    command: $USER
+    expected: hugo    
