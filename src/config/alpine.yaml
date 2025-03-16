@@ -130,6 +130,6 @@ tests:
     expected: pandoc-default
     
   defaultuser:
-    entrypoint: whoami
-    command: $USER
-    expected: hugo    
+    entrypoint: id
+    command: -u
+    expected: "1234"    
