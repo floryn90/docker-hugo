@@ -10,6 +10,11 @@ env:
 
 permissions: 
   contents: write
+  pull-requests: write
+  discussions: write
+  issues: write
+  id-token: write
+  attestations: write
 
 jobs:
   update:
