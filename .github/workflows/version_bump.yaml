@@ -8,6 +8,9 @@ on:
 env:
   GIT_DISCOVERY_ACROSS_FILESYSTEM: "true"
 
+permissions: 
+  contents: write
+
 jobs:
   update:
     runs-on: floryn90-runners
