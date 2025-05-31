@@ -66,7 +66,11 @@ VOLUME [ "/src", "/target" ]
 
 IMPORT ../_imports/ci.df
 
+RUN git config --global --add safe.directory /src
+
 IMPORT ../_imports/onbuild.df
+
+RUN git config --global --add safe.directory /src
 
 FROM main
 
