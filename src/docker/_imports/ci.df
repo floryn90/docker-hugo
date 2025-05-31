@@ -2,6 +2,7 @@ FROM main AS ci
 
 ENV HUGO_ENV="production"
 RUN chown -R hugo:hugo /src /target
+RUN git config --global --add safe.directory /src
 USER hugo
 ENTRYPOINT [ "" ]
 CMD [ "hugo" ]
