@@ -1,5 +1,5 @@
 image: floryn90/hugo
-version: 0.147.8
+version: 0.147.9
 
 platforms:
   - linux/amd64
