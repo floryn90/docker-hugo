@@ -20,7 +20,7 @@ USER root
 IMPORT ../_imports/default_nonroot_user_alpine.df
 RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdata make \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
- && mkdir -p /src /target \
+ && mkdir -p /src /target /builds \
  && chown -R hugo:hugo /src /target /builds /home/hugo \
  && chmod a+rwx /src /target /builds
 
