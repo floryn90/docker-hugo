@@ -14,13 +14,13 @@ RUN apt update \
  && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
- && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo \
- && chmod a+wrx /src /target
+ && mkdir -p /src /target /builds \
+ && chown -R hugo:hugo /src /target /builds /home/hugo \
+ && chmod a+wrx /src /target /builds
 
 COPY --from=base--files--debian / /
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 EXPOSE 1313
 WORKDIR /src

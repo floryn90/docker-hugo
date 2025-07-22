@@ -1,7 +1,7 @@
 FROM main AS ci
 
 ENV HUGO_ENV="production"
-RUN chown -R hugo:hugo /src /target
+RUN chown -R hugo:hugo /src /target /builds
 USER hugo
 ENTRYPOINT [ "" ]
 CMD [ "hugo" ]

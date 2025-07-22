@@ -54,24 +54,27 @@ RUN true \
  && apt autoremove -y \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
- && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo \
- && chmod a+wrx /src /target \
+ && mkdir -p /src /target /builds \
+ && chown -R hugo:hugo /src /target /builds /home/hugo \
+ && chmod a+wrx /src /target /builds \
  #
  # add /src to safe.directory
- && git config --global --add safe.directory /src 
- 
+ && git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
+
 COPY --from=base--golang / /
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 IMPORT ../_imports/ci.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 IMPORT ../_imports/onbuild.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 USER hugo
 

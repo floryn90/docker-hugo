@@ -6,7 +6,7 @@ COPY --from=base--pandoc / /
 
 IMPORT ../_imports/default_nonroot_user_alpine.df
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 IMPORT ../_imports/ci.df
 
