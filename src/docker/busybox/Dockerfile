@@ -20,11 +20,11 @@ COPY --from=image / /
 
 IMPORT ../_imports/default_nonroot_user_alpine.df
 
-RUN mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo \
- && chmod a+wrx /src /target
+RUN mkdir -p /src /target /builds \
+ && chown -R hugo:hugo /src /target /builds /home/hugo \
+ && chmod a+wrx /src /target /builds
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 EXPOSE 1313
 

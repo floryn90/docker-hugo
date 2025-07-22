@@ -44,6 +44,7 @@ jobs:
         id: setup-buildx
         with:
           version: latest
+          cache-binary: false
 
       - name: Docker login
         uses: docker/login-action@v3

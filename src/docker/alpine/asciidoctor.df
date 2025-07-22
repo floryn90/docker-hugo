@@ -5,7 +5,7 @@ RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && gem install coderay asciidoctor-rouge --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 
 IMPORT ../_imports/ci.df

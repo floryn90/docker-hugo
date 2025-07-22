@@ -45,14 +45,16 @@ RUN true \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  #
  # Prepare folders
- && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo /usr/local/lib/node_modules \
- && chmod a+wrx /src /target \
+ && mkdir -p /src /target /builds \
+ && chown -R hugo:hugo /src /target /builds /home/hugo /usr/local/lib/node_modules \
+ && chmod a+wrx /src /target /builds \
  #
  # add /src to safe.directory
- && git config --global --add safe.directory /src
+ && git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds 
 
-VOLUME [ "/src", "/target" ]
+
+VOLUME [ "/src", "/target", "/builds" ]
 
 EXPOSE 1313
 
@@ -64,11 +66,13 @@ ENTRYPOINT ["hugo"]
 
 IMPORT ../_imports/ci.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 IMPORT ../_imports/onbuild.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 FROM main
 

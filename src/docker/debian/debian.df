@@ -10,7 +10,7 @@ IMPORT ../_imports/ci.df
 
 IMPORT ../_imports/onbuild.df
 
-VOLUME [ "/src", "/target" ]
+VOLUME [ "/src", "/target", "/builds" ]
 
 FROM main
 

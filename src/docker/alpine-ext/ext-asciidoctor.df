@@ -7,19 +7,21 @@ IMPORT ../_imports/default_nonroot_user_alpine.df
 RUN apk -U upgrade && apk --no-cache add asciidoctor \
  && gem install coderay --no-document \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
- && mkdir -p /src /target \
- && chown -R hugo:hugo /src /target /home/hugo \
- && chmod -R a+rwx /src /target
+ && mkdir -p /src /target /builds \
+ && chown -R hugo:hugo /src /target /builds /home/hugo \
+ && chmod -R a+rwx /src /target /builds
 
- VOLUME [ "/src", "/target" ]
+ VOLUME [ "/src", "/target", "/builds" ]
 
 IMPORT ../_imports/ci.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 IMPORT ../_imports/onbuild.df
 
-RUN git config --global --add safe.directory /src
+RUN git config --global --add safe.directory /src \
+ && git config --global --add safe.directory /builds
 
 USER hugo
 
