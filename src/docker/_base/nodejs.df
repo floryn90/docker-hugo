@@ -1,7 +1,8 @@
 FROM base--image--alpine AS fetcher-glibc
 
 ARG TARGETPLATFORM
-
+RUN apk -U upgrade && apk --no-cache add curl jq \
+ && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 ADD _script/nodejs-glibc.sh nodejs.sh
 RUN sh nodejs.sh
 
@@ -14,7 +15,8 @@ COPY --from=fetcher-glibc /files /
 FROM base--image--alpine AS fetcher-musl
 
 ARG TARGETPLATFORM
-
+RUN apk -U upgrade && apk --no-cache add curl jq \
+ && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 ADD _script/nodejs-musl.sh nodejs.sh
 RUN sh nodejs.sh
 

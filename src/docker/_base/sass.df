@@ -1,7 +1,8 @@
 FROM base--image--alpine AS fetcher
 
 ARG TARGETPLATFORM
-
+RUN apk -U upgrade && apk --no-cache add curl jq \
+ && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 COPY _script/sass.sh sass.sh
 RUN sh sass.sh
 
