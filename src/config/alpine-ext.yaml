@@ -64,7 +64,7 @@ images:
       - $(VERSION)-ext-asciidoctor-ci
     platforms:
       - linux/amd64
-      - linux/arm64
+      # - linux/arm64
     tests:
       - defaultuser
 
