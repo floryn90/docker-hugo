@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-SASS_VERSION="1.90.0"
+SASS_VERSION=$(curl -s https://api.github.com/repos/sass/dart-sass/releases/latest | jq -r .tag_name)
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}

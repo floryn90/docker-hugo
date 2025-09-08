@@ -15,7 +15,7 @@ IMPORT ../_imports/default_nonroot_user.df
 
 RUN apt update \
  && apt -y full-upgrade \
- && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates \
+ && DEBIAN_FRONTEND=noninteractive apt install -y wget bash-completion tzdata make ca-certificates jq \
  && rm -rf /var/lib/apt/lists/* \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target /builds \

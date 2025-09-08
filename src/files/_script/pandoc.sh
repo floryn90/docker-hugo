@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-PANDOC_VERSION="3.7.0.2"
+PANDOC_VERSION=$(curl -s https://api.github.com/repos/jgm/pandoc/releases/latest | jq -r .tag_name)
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}

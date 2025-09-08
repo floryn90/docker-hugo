@@ -27,26 +27,26 @@ RUN true \
  # Install software
  && apt update \
  && apt -y full-upgrade \
- && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg apt-transport-https lsb-release \
+ && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg gpg2 apt-transport-https lsb-release jq \
  #
  # Install Python 3 and rst2html
  && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-minimal python3-pip python3-setuptools python3-wheel \
  && pip install --break-system-packages rst2html \
  #
  # Install NodeJS and tooling
- && apt install -y ca-certificates curl gnupg \
+ && apt install -y ca-certificates \
  && mkdir -p /etc/apt/keyrings \
  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
  && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_24.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
  && apt update \
  && apt install nodejs -y \
 #
-# && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-# && apt install -y nodejs \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
+ # Install Ruby using RVM
+ && curl -sSL https://get.rvm.io | bash -s stable --ruby \
  # Install Asciidoctor
- && DEBIAN_FRONTEND=noninteractive apt install -y ruby asciidoctor coderay \
+ && gem install asciidoctor coderay \
  #
  # Cleaning up
  && apt remove -y curl gnupg apt-transport-https lsb-release python3-pip python3-setuptools python3-wheel \
