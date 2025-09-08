@@ -19,7 +19,7 @@ images:
       - defaultuser
     platforms:
       - linux/amd64
-      # - linux/arm64
+      - linux/arm64
 
   # Ubuntu + Hugo extended + CI
   ext-ubuntu-ci:
@@ -28,7 +28,7 @@ images:
       - $(VERSION)-ext-ubuntu-ci
     platforms:
       - linux/amd64
-      # - linux/arm64
+      - linux/arm64
     tests:
       - defaultuser
 
@@ -39,7 +39,7 @@ images:
       - $(VERSION)-ext-ubuntu-onbuild
     platforms:
       - linux/amd64
-      # - linux/arm64
+      - linux/arm64
     tests:
       - defaultuser
 

@@ -1,42 +1,42 @@
-FROM base--image--alpine AS fetcher-glibc
+# FROM base--image--alpine AS fetcher-glibc
 
-ARG TARGETPLATFORM
-RUN apk -U upgrade && apk --no-cache add curl jq \
- && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
-ADD _script/nodejs-glibc.sh nodejs.sh
-RUN sh nodejs.sh
-
-
-FROM scratch AS glibc
-
-COPY --from=fetcher-glibc /files /
+# ARG TARGETPLATFORM
+# RUN apk -U upgrade && apk --no-cache add curl jq \
+#  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
+# ADD _script/nodejs-glibc.sh nodejs.sh
+# RUN sh nodejs.sh
 
 
-FROM base--image--alpine AS fetcher-musl
+# FROM scratch AS glibc
 
-ARG TARGETPLATFORM
-RUN apk -U upgrade && apk --no-cache add curl jq \
- && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
-ADD _script/nodejs-musl.sh nodejs.sh
-RUN sh nodejs.sh
+# COPY --from=fetcher-glibc /files /
 
 
-FROM scratch AS musl
+# FROM base--image--alpine AS fetcher-musl
 
-COPY --from=fetcher-musl /files /
+# ARG TARGETPLATFORM
+# RUN apk -U upgrade && apk --no-cache add curl jq \
+#  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
+# ADD _script/nodejs-musl.sh nodejs.sh
+# RUN sh nodejs.sh
+
+
+# FROM scratch AS musl
+
+# COPY --from=fetcher-musl /files /
 
 # This is my personal workaround for nodejs images
 
-# # Use the official Node.js Alpine image as the first stage
-# FROM node:current-alpine AS node-base
+# Use the official Node.js Alpine image as the first stage
+FROM node:current-alpine AS node-base
 
-# # Initialize the second stage with your custom image
-# FROM scratch AS musl
+# Initialize the second stage with your custom image
+FROM scratch AS musl
 
-# # Copy Node.js, npm, and yarn related files and directories from the first stage to the second stage
-# COPY --from=node-base /usr/lib /usr/lib
-# COPY --from=node-base /usr/local/share /usr/local/share
-# COPY --from=node-base /usr/local/lib /usr/local/lib
-# COPY --from=node-base /usr/local/include /usr/local/include
-# COPY --from=node-base /usr/local/bin /usr/local/bin
-# COPY --from=node-base /opt /opt
+# Copy Node.js, npm, and yarn related files and directories from the first stage to the second stage
+COPY --from=node-base /usr/lib /usr/lib
+COPY --from=node-base /usr/local/share /usr/local/share
+COPY --from=node-base /usr/local/lib /usr/local/lib
+COPY --from=node-base /usr/local/include /usr/local/include
+COPY --from=node-base /usr/local/bin /usr/local/bin
+COPY --from=node-base /opt /opt
