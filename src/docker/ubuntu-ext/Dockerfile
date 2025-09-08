@@ -28,7 +28,7 @@ RUN true \
  && apt update \
  && apt -y autoremove \
  && apt -y full-upgrade \
- && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg gpg2 apt-transport-https lsb-release jq \
+ && DEBIAN_FRONTEND=noninteractive apt install -y curl git gnupg apt-transport-https lsb-release jq \
  #
  # Install Python 3 and rst2html
  && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3-minimal python3-pip python3-setuptools python3-wheel \
