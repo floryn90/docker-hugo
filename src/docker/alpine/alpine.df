@@ -18,7 +18,7 @@ ENV HUGO_BIND="0.0.0.0" \
 COPY --from=image / /
 USER root
 IMPORT ../_imports/default_nonroot_user_alpine.df
-RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdata make jq \
+RUN apk -U upgrade && apk --no-cache add busybox-suid bash bash-completion tzdata make curl jq \
  && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf \
  && mkdir -p /src /target /builds \
  && chown -R hugo:hugo /src /target /builds /home/hugo \
