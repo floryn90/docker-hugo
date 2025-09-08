@@ -16,7 +16,6 @@ images:
       - defaultuser
     platforms:
       - linux/amd64
-      # - linux/arm64
 
   # Alpine + Hugo extended + CI
   ext-alpine-ci:
@@ -25,7 +24,6 @@ images:
       - $(VERSION)-ext-alpine-ci
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
@@ -36,7 +34,6 @@ images:
       - $(VERSION)-ext-alpine-onbuild
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
@@ -55,7 +52,6 @@ images:
       - defaultuser
     platforms:
       - linux/amd64
-      # - linux/arm64
 
   # Alpine + Hugo extended + Asciidoctor + CI
   ext-asciidoctor-ci:
@@ -64,7 +60,6 @@ images:
       - $(VERSION)-ext-asciidoctor-ci
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
@@ -75,7 +70,6 @@ images:
       - $(VERSION)-ext-asciidoctor-onbuild
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
@@ -95,7 +89,6 @@ images:
       - defaultuser
     platforms:
       - linux/amd64
-      # - linux/arm64
 
   # Alpine + Hugo extended + Pandoc + CI
   ext-pandoc-ci:
@@ -104,7 +97,6 @@ images:
       - $(VERSION)-ext-pandoc-ci
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
@@ -115,7 +107,6 @@ images:
       - $(VERSION)-ext-pandoc-onbuild
     platforms:
       - linux/amd64
-      # - linux/arm64
     tests:
       - defaultuser
 
