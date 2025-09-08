@@ -3,10 +3,7 @@ FROM alpine AS main
 ENV HUGO_PANDOC="pandoc-default"
 
 COPY --from=base--pandoc / /
-USER root
 IMPORT ../_imports/default_nonroot_user_alpine.df
-RUN apk -U upgrade && apk --no-cache add curl jq \
- && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 
 VOLUME [ "/src", "/target", "/builds" ]
 
