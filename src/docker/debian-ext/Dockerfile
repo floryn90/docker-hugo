@@ -46,7 +46,7 @@ RUN true \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install Asciidoctor
- && DEBIAN_FRONTEND=noninteractive apt install -y ruby-full \
+ && DEBIAN_FRONTEND=noninteractive apt install -y ruby \
  && gem update --system \
  && gem install bundler \
  && gem install asciidoctor coderay \
