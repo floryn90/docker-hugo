@@ -20,6 +20,11 @@ COPY --from=image / /
 
 COPY --from=ruby /usr/local/ /usr/local/
 
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_SILENCE_ROOT_WARNING=1 \
+	BUNDLE_APP_CONFIG="$GEM_HOME"
+ENV PATH $GEM_HOME/bin:$PATH
+
 USER root
 
 IMPORT ../_imports/default_nonroot_user.df
