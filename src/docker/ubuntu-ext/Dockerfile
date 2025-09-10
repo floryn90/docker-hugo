@@ -5,6 +5,7 @@ COPY --from=base--pandoc / /
 COPY --from=base--sass / /
 #COPY --from=base--nodejs--glibc / /
 
+FROM ruby:slim as ruby
 
 
 FROM base-ubuntu AS main
@@ -17,6 +18,10 @@ ENV HUGO_EDITION="extended" \
     GOROOT="/usr/local/lib/go"
 
 COPY --from=image / /
+
+COPY --from=ruby /usr/local/bundle /usr/local/bundle
+COPY --from=ruby /usr/local/bin /usr/local/bin
+
 
 USER root
 
@@ -47,9 +52,7 @@ RUN true \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
  # Install Asciidoctor
- && DEBIAN_FRONTEND=noninteractive apt install -y ruby-full \
  && gem update --system \
- && gem install bundler \
  && gem install asciidoctor coderay \
  #
  # Cleaning up
