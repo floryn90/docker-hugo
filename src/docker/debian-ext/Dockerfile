@@ -25,6 +25,11 @@ ENV BUNDLE_SILENCE_ROOT_WARNING 1 \
 	BUNDLE_APP_CONFIG "$GEM_HOME"
 ENV PATH $GEM_HOME/bin:$PATH
 
+RUN set -eux; \
+	mkdir "$GEM_HOME"; \
+# adjust permissions of GEM_HOME for running "gem install" as an arbitrary user
+	chmod 1777 "$GEM_HOME"
+
 USER root
 
 IMPORT ../_imports/default_nonroot_user.df
