@@ -14,21 +14,15 @@ ENV HUGO_EDITION="extended" \
     NODE_PATH=".:/usr/lib/node_modules" \
     #NODE_PATH=".:/usr/local/node/lib/node_modules" \
     #PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/node/bin" \
-    GOROOT="/usr/local/lib/go"
+    GOROOT="/usr/local/lib/go" \
+    GEM_HOME="/usr/local/bundle" \
+    BUNDLE_SILENCE_ROOT_WARNING=1 \
+    BUNDLE_APP_CONFIG="/usr/local/bundle" \
+    PATH="/usr/local/bundle/bin:/usr/local/lib/go/bin:$PATH"
 
 COPY --from=image / /
 
 COPY --from=ruby /usr/local/ /usr/local/
-
-ENV GEM_HOME /usr/local/bundle
-ENV BUNDLE_SILENCE_ROOT_WARNING 1 \
-	BUNDLE_APP_CONFIG "$GEM_HOME"
-ENV PATH $GEM_HOME/bin:$PATH
-
-RUN set -eux; \
-	mkdir "$GEM_HOME"; \
-# adjust permissions of GEM_HOME for running "gem install" as an arbitrary user
-	chmod 1777 "$GEM_HOME"
 
 USER root
 
