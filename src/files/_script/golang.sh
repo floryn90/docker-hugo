@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-GOLANG_VERSION="1.25.0"
+GOLANG_VERSION=$(curl -s https://go.dev/dl/?mode=json | jq -r .[0].version | sed 's/^go//')
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}

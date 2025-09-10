@@ -5,6 +5,9 @@ COPY --from=base--pandoc / /
 COPY --from=base--sass / /
 #COPY --from=base--nodejs--glibc / /
 
+FROM ruby:latest as ruby
+RUN gem update --system \
+ && gem install asciidoctor coderay --no-document
 
 
 FROM base-ubuntu AS main
@@ -14,9 +17,19 @@ ENV HUGO_EDITION="extended" \
     NODE_PATH=".:/usr/lib/node_modules" \
     #NODE_PATH=".:/usr/local/node/lib/node_modules" \
     #PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/node/bin" \
-    GOROOT="/usr/local/lib/go"
+    GOROOT="/usr/local/lib/go" \
+    GEM_HOME="/usr/local/bundle" \
+    PATH="/usr/local/bundle/bin:/usr/local/bin:$PATH"
 
 COPY --from=image / /
+
+COPY --from=ruby /usr/local/bundle /usr/local/bundle
+COPY --from=ruby /usr/local/bin /usr/local/bin
+COPY --from=ruby /usr/local/lib /usr/local/lib
+
+ENV GEM_HOME="/usr/local/bundle" \
+    PATH="/usr/local/bundle/bin:/usr/local/bin:$PATH"
+
 
 USER root
 
@@ -46,8 +59,6 @@ RUN true \
 #  && apt install -y nodejs \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
- # Install Asciidoctor
- && DEBIAN_FRONTEND=noninteractive apt install -y ruby asciidoctor coderay \
  #
  # Cleaning up
  && apt remove -y curl gnupg apt-transport-https lsb-release python3-pip python3-setuptools python3-wheel \

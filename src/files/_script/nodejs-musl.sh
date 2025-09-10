@@ -6,7 +6,7 @@ set -e
 set -u
 
 # Variables
-NODE_VERSION="24.6.0"
+NODE_VERSION=$(curl -s https://unofficial-builds.nodejs.org/download/release/index.json | jq -r .[0].version)
 
 # Architecture
 TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
@@ -23,7 +23,7 @@ else
 fi
 
 # Download
-wget https://unofficial-builds.nodejs.org/download/release/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODE_ARCH}-musl.tar.xz \
+wget https://unofficial-builds.nodejs.org/download/release/${NODE_VERSION}/node-${NODE_VERSION}-linux-${NODE_ARCH}-musl.tar.xz \
   -O /node.tar.xz
 
 # Unpack

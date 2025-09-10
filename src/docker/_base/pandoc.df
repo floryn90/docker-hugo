@@ -3,6 +3,8 @@ FROM base--image--alpine AS fetcher
 ARG TARGETPLATFORM
 
 COPY _script/pandoc.sh pandoc.sh
+RUN apk -U upgrade && apk --no-cache add curl jq \
+ && find /tmp -mindepth 1 -maxdepth 1 | xargs rm -rf
 RUN sh pandoc.sh
 
 COPY pandoc /files

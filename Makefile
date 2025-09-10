@@ -15,9 +15,20 @@ build-debug: src/bin/buildx
 
 prepare: src/bin/buildx
 	@rm -rf target/bundle
-	@docker run --rm -i -v $$(pwd):/work -u $$(id -u) \
+	@ARCH=$$(uname -m); \
+	case $$ARCH in \
+		aarch64|arm64) PLAT=linux/arm64 ;; \
+		x86_64) PLAT=linux/amd64 ;; \
+		*) PLAT=linux/amd64 ;; \
+	esac; \
+	 docker run --rm -i --platform=$$PLAT -v $$(pwd):/work -u $$(id -u) \
 		klakegg/docker-project-prepare:edge \
-		-t target/bundle
+		-t target/bundle || \
+    ( echo "Image has no $$PLAT manifest; retrying with linux/amd64..."; \
+      docker run --rm -i --platform=linux/amd64 -v $$(pwd):/work -u $$(id -u) \
+        klakegg/docker-project-prepare:edge \
+        -t target/bundle ) || \
+    ( echo "Prepar­er failed on both platforms. If you are on Apple Silicon run: sudo make enable-qemu && make prepare"; exit 1 )
 	@sed -i "s:DOCKER_CLI_EXPERIMENTAL=enabled docker buildx:buildx:g" target/bundle/Makefile
 #	@sed -i 's:--progress plain \\:--progress plain \\\n                --annotation $(DOCKER_METADATA_OUTPUT_ANNOTATIONS) \\:g' target/bundle/Makefile
 	@sed -i "s:--push:--provenance=true --sbom=true --push:g" target/bundle/Makefile
@@ -46,9 +57,25 @@ bump:
 	@RELEASE=$(version) bump
 
 src/bin/buildx:
-	@curl -sL -o src/bin/buildx https://github.com/docker/buildx/releases/latest/download/buildx-$(shell curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r .tag_name).linux-amd64
-	@chmod a+x src/bin/buildx
-	@docker buildx create --use
+	@mkdir -p src/bin
+	TAG=$$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | jq -r .tag_name); \
+	OS=$$(uname -s); ARCH=$$(uname -m); \
+	case $$ARCH in \
+		x86_64) A=amd64 ;; \
+		aarch64|arm64) A=arm64 ;; \
+		armv7*|armv6*) A=arm-v7 ;; \
+		*) A=amd64 ;; \
+	esac; \
+	case $$OS in \
+		Darwin) PLAT=darwin-$$A ;; \
+		Linux) PLAT=linux-$$A ;; \
+		*) PLAT=linux-$$A ;; \
+	esac; \
+	URL="https://github.com/docker/buildx/releases/download/$$TAG/buildx-$$TAG.$$PLAT"; \
+	echo "Downloading $$URL"; \
+	curl -sL -o src/bin/buildx $$URL; \
+	chmod a+x src/bin/buildx
+	@docker buildx create --use || true
 
 enable-qemu:
 	@sudo docker run --rm --privileged multiarch/qemu-user-static --reset -p yes

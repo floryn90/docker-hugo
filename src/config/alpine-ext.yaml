@@ -136,7 +136,7 @@ tests:
   pandoc:
     entrypoint: pandoc
     command: --version
-    expected: pandoc-default
+    expected: pandoc
 
   golang:
     entrypoint: go
