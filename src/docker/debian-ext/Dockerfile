@@ -5,7 +5,7 @@ COPY --from=base--pandoc / /
 COPY --from=base--sass / /
 #COPY --from=base--nodejs--glibc / /
 
-FROM ruby:slim as ruby
+FROM ruby:latest as ruby
 
 FROM base-debian AS main
 
