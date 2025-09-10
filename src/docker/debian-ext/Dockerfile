@@ -18,10 +18,7 @@ ENV HUGO_EDITION="extended" \
 
 COPY --from=image / /
 
-COPY --from=ruby /usr/local/bundle /usr/local/bundle
-COPY --from=ruby /usr/local/bin/ruby /usr/local/bin/
-COPY --from=ruby /usr/local/lib/ruby /usr/local/lib/ruby
-COPY --from=ruby /usr/local/lib/libruby.so* /usr/local/lib/
+COPY --from=ruby /usr/local/ /usr/local/
 
 USER root
 
