@@ -6,6 +6,8 @@ COPY --from=base--sass / /
 #COPY --from=base--nodejs--glibc / /
 
 FROM ruby:latest as ruby
+RUN gem update --system \
+ && gem install asciidoctor coderay --no-document
 
 FROM base-debian AS main
 
@@ -16,17 +18,23 @@ ENV HUGO_EDITION="extended" \
     #PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/node/bin" \
     GOROOT="/usr/local/lib/go" \
     GEM_HOME="/usr/local/bundle" \
-    BUNDLE_SILENCE_ROOT_WARNING=1 \
-    BUNDLE_APP_CONFIG="/usr/local/bundle" \
-    PATH="/usr/local/bundle/bin:/usr/local/lib/go/bin:$PATH"
+    PATH="/usr/local/bundle/bin:/usr/local/bin:$PATH"
 
 COPY --from=image / /
 
-COPY --from=ruby /usr/local/ /usr/local/
+COPY --from=ruby /usr/local/bundle /usr/local/bundle
+COPY --from=ruby /usr/local/bin /usr/local/bin
+COPY --from=ruby /usr/local/lib /usr/local/lib
+
+ENV GEM_HOME="/usr/local/bundle" \
+    PATH="/usr/local/bundle/bin:/usr/local/bin:$PATH"
 
 USER root
 
 IMPORT ../_imports/default_nonroot_user.df
+
+ENV GEM_HOME="/usr/local/bundle" \
+    PATH="/usr/local/bundle/bin:/usr/local/lib/go/bin:$PATH"
 
 RUN true \
  #
@@ -51,10 +59,6 @@ RUN true \
 # && apt install -y nodejs \
  && npm install -g autoprefixer postcss postcss-cli yarn @babel/cli @babel/core @fullhuman/postcss-purgecss \
  #
- # Install Asciidoctor
-#  && DEBIAN_FRONTEND=noninteractive apt install -y ruby \
- && gem update --system \
- && gem install asciidoctor coderay \
  #
  # Cleaning up
  && apt remove -y curl gnupg apt-transport-https lsb-release python3-pip python3-setuptools python3-wheel \
