@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   update:
-    runs-on: floryn90-runners
+    runs-on: ubuntu
     steps:      
 
       - name: Checkout
