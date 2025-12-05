@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   Analysis:
-    runs-on: floryn90-runners
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
